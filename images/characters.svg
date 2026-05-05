@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Character card decorative frame -->
+  <defs>
+    <pattern id="cloud" width="60" height="30" patternUnits="userSpaceOnUse">
+      <path d="M0 25 Q15 15 30 25 Q45 15 60 25" fill="none" stroke="#d4a574" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#faf7f2"/>
+  <rect x="20" y="20" width="360" height="360" fill="url(#cloud)"/>
+  <!-- Decorative border -->
+  <rect x="30" y="30" width="340" height="340" fill="none" stroke="#c4a882" stroke-width="2" rx="8"/>
+  <rect x="40" y="40" width="320" height="320" fill="none" stroke="#c4a882" stroke-width="0.5" rx="6"/>
+  <!-- Corner ornaments -->
+  <g fill="#b8860b" opacity="0.5">
+    <path d="M40 40 Q50 45 45 55 Q40 50 40 40"/>
+    <path d="M360 40 Q350 45 355 55 Q360 50 360 40"/>
+    <path d="M40 360 Q50 355 45 345 Q40 350 40 360"/>
+    <path d="M360 360 Q350 355 355 345 Q360 350 360 360"/>
+  </g>
+</svg>

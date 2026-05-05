@@ -68,3 +68,21 @@ body{font-family:"STKaiti","KaiTi","Noto Serif SC",serif;background:var(--bg);co
 @supports(padding: env(safe-area-inset-top)) {
   body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
 }
+
+/* Scene backgrounds using SVG illustrations */
+#screen-cover { background: url('../images/cover-bg.svg') center/cover no-repeat, linear-gradient(180deg,#f5f0e8,#e8ddd0); }
+.character-card { background: url('../images/characters.svg') center/cover no-repeat, #fff; }
+.scene-bg-qinfang_ting { background: url('../images/scene-qinfang.svg') center/cover no-repeat; }
+.scene-bg-xiaoxiang_guan { background: url('../images/scene-xiaoxiang.svg') center/cover no-repeat; }
+.scene-bg-yihong_yuan { background: url('../images/scene-yihong.svg') center/cover no-repeat; }
+.scene-bg-hengwu_yuan { background: url('../images/scene-hengwu.svg') center/cover no-repeat; }
+.scene-bg-daoxiang_cun { background: url('../images/scene-daoxiang.svg') center/cover no-repeat; }
+.scene-bg-qiushuang_zhai { background: url('../images/scene-qiushuang.svg') center/cover no-repeat; }
+.scene-bg-longcui_an { background: url('../images/scene-longcui.svg') center/cover no-repeat; }
+.scene-bg-daguan_lou { background: url('../images/scene-daguan.svg') center/cover no-repeat; }
+
+.scene-illustration {
+  width: 100%; max-width: 500px; height: 200px; border-radius: 12px;
+  margin-bottom: 16px; box-shadow: var(--shadow);
+  background-size: cover; background-position: center;
+}

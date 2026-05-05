@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs><linearGradient id="s8bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f8f0e0"/><stop offset="100%" style="stop-color:#e8d8c0"/></linearGradient></defs>
+  <rect width="500" height="300" fill="url(#s8bg)"/>
+  <!-- Grand building - multi-story -->
+  <rect x="150" y="100" width="200" height="180" fill="#f0e0c8" stroke="#8b6b4a" stroke-width="2"/>
+  <path d="M130 100 L250 50 L370 100" fill="none" stroke="#6b4423" stroke-width="3"/>
+  <path d="M140 100 L250 55 L360 100" fill="#d4b896" stroke="none"/>
+  <!-- Second floor -->
+  <line x1="150" y1="170" x2="350" y2="170" stroke="#8b6b4a" stroke-width="1.5"/>
+  <path d="M140 170 L250 140 L360 170" fill="none" stroke="#6b4423" stroke-width="2"/>
+  <!-- Windows -->
+  <rect x="180" y="110" width="30" height="40" fill="#6b4423" opacity="0.3"/>
+  <rect x="290" y="110" width="30" height="40" fill="#6b4423" opacity="0.3"/>
+  <rect x="180" y="190" width="30" height="40" fill="#6b4423" opacity="0.3"/>
+  <rect x="290" y="190" width="30" height="40" fill="#6b4423" opacity="0.3"/>
+  <!-- Lanterns -->
+  <g fill="#c83030" opacity="0.8">
+    <ellipse cx="170" cy="95" rx="8" ry="12"/><ellipse cx="330" cy="95" rx="8" ry="12"/>
+  </g>
+  <!-- Festive atmosphere - small dots -->
+  <g fill="#f0c040" opacity="0.4">
+    <circle cx="100" cy="80" r="2"/><circle cx="400" cy="70" r="2"/><circle cx="250" cy="40" r="2.5"/>
+    <circle cx="80" cy="150" r="1.5"/><circle cx="420" cy="130" r="1.5"/>
+  </g>
+</svg>

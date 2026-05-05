@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs><linearGradient id="s5bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f8f5e8"/><stop offset="100%" style="stop-color:#e8e0c8"/></linearGradient></defs>
+  <rect width="500" height="300" fill="url(#s5bg)"/>
+  <!-- Thatched cottage -->
+  <path d="M150 150 L250 100 L350 150" fill="#a08050" stroke="#6b4423" stroke-width="2"/>
+  <rect x="175" y="150" width="150" height="80" fill="#d4b896" stroke="#8b6b4a" stroke-width="1.5"/>
+  <rect x="230" y="170" width="40" height="60" fill="#6b4423" opacity="0.5"/>
+  <!-- Rice paddies -->
+  <g stroke="#8aaa50" stroke-width="1" fill="none" opacity="0.7">
+    <path d="M0 260 Q50 255 100 260 Q150 265 200 260 Q250 255 300 260 Q350 265 400 260 Q450 255 500 260"/>
+    <path d="M0 275 Q50 270 100 275 Q150 280 200 275 Q250 270 300 275 Q350 280 400 275 Q450 270 500 275"/>
+  </g>
+  <!-- Fence -->
+  <g stroke="#8b7355" stroke-width="2">
+    <line x1="50" y1="230" x2="450" y2="230"/><line x1="50" y1="240" x2="450" y2="240"/>
+    <line x1="80" y1="220" x2="80" y2="245"/><line x1="130" y1="220" x2="130" y2="245"/>
+    <line x1="180" y1="220" x2="180" y2="245"/><line x1="320" y1="220" x2="320" y2="245"/>
+    <line x1="370" y1="220" x2="370" y2="245"/><line x1="420" y1="220" x2="420" y2="245"/>
+  </g>
+</svg>

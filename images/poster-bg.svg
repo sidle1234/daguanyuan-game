@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 1334">
+  <defs>
+    <linearGradient id="pbg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f0e8"/><stop offset="50%" style="stop-color:#faf7f2"/><stop offset="100%" style="stop-color:#ede5d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="750" height="1334" fill="url(#pbg)"/>
+  <!-- Top border -->
+  <rect x="0" y="0" width="750" height="4" fill="#8b4513"/>
+  <rect x="0" y="1330" width="750" height="4" fill="#8b4513"/>
+  <!-- Decorative clouds top -->
+  <path d="M0 80 Q100 60 200 80 Q300 60 400 80 Q500 60 600 80 Q700 60 750 80" fill="none" stroke="#d4a574" stroke-width="1" opacity="0.4"/>
+  <!-- Mountain silhouette bottom -->
+  <path d="M0 1200 Q150 1150 300 1180 Q450 1130 600 1170 Q700 1150 750 1180 L750 1334 L0 1334Z" fill="#d4c5b0" opacity="0.3"/>
+  <!-- Bamboo decoration -->
+  <g opacity="0.15" stroke="#4a7a4a" fill="none" stroke-width="2">
+    <line x1="680" y1="200" x2="680" y2="800"/><line x1="700" y1="250" x2="700" y2="750"/>
+    <line x1="720" y1="300" x2="720" y2="700"/>
+  </g>
+</svg>

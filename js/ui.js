@@ -53,6 +53,8 @@ class GameUI {
   renderScene(scene) {
     const c = document.getElementById('scene-content');
     let html = '<div class="scene-header"><h2>'+scene.name+'</h2><p class="scene-subtitle">'+scene.subtitle+'</p></div>';
+    // Scene illustration
+    html += '<div class="scene-illustration scene-bg-'+scene.id+'"></div>';
     html += '<div class="scene-description"><p>'+scene.description+'</p></div>';
     const clue = this.engine.getHiddenClue();
     if (clue) html += '<div class="hidden-clue"><span>?? 隐藏线索：</span>'+clue+'</div>';
@@ -119,7 +121,21 @@ class GameUI {
   generatePoster() {
     const stats = this.engine.getStats(); const canvas = document.getElementById('poster-canvas'); const ctx = canvas.getContext('2d');
     canvas.width = 750; canvas.height = 1334;
-    ctx.fillStyle = '#f5f0e8'; ctx.fillRect(0,0,750,1334);
+    // Load poster background SVG as image
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, 750, 1334);
+      this.drawPosterContent(ctx, stats);
+    };
+    img.onerror = () => {
+      // Fallback: solid background
+      ctx.fillStyle = '#f5f0e8'; ctx.fillRect(0,0,750,1334);
+      this.drawPosterContent(ctx, stats);
+    };
+    img.src = 'images/poster-bg.svg';
+    canvas.style.display = 'block';
+  }
+  drawPosterContent(ctx, stats) {
     ctx.fillStyle = '#4a2c17'; ctx.font = 'bold 48px serif'; ctx.textAlign = 'center'; ctx.fillText('大观园寻梦记', 375, 120);
     ctx.font = '28px serif'; ctx.fillStyle = '#8b6914'; ctx.fillText('红楼雅客', 375, 170);
     ctx.font = 'bold 36px serif'; ctx.fillStyle = '#4a2c17'; ctx.fillText(stats.character.name, 375, 350);
@@ -131,7 +147,7 @@ class GameUI {
     ctx.font = 'bold 32px serif'; ctx.fillStyle = '#8b4513'; ctx.fillText('结局：'+stats.ending.title, 375, 780);
     const pt = this.engine.data.posterTexts[Math.floor(Math.random()*3)];
     ctx.font = '22px serif'; ctx.fillStyle = '#999'; ctx.fillText(pt, 375, 1100);
-    canvas.style.display = 'block';
+    ctx.font = '20px sans-serif'; ctx.fillStyle = '#aaa'; ctx.fillText('长按保存图片，分享给好友', 375, 1200);
   }
   onRestart() { this.storage.clear(); this.engine.newGame(); this.showScreen('cover'); }
   getCharacterEmoji(id) {

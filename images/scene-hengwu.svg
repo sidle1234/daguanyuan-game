@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs><linearGradient id="s4bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f8f8f2"/><stop offset="100%" style="stop-color:#f0ede5"/></linearGradient></defs>
+  <rect width="500" height="300" fill="url(#s4bg)"/>
+  <!-- Herbs and plants -->
+  <g stroke="#5a8a5a" fill="none" stroke-width="1.5">
+    <path d="M80 280 Q85 240 75 200 Q80 180 90 160"/><path d="M100 280 Q105 250 95 220 Q100 200 110 180"/>
+    <path d="M150 280 Q145 250 155 220"/><path d="M180 280 Q185 240 175 200"/>
+    <path d="M350 280 Q355 250 345 220 Q350 200 360 180"/><path d="M380 280 Q375 240 385 210"/>
+  </g>
+  <!-- Small leaves -->
+  <g fill="#7aaa7a" opacity="0.6">
+    <ellipse cx="75" cy="180" rx="8" ry="4" transform="rotate(-30 75 180)"/>
+    <ellipse cx="95" cy="200" rx="7" ry="3" transform="rotate(20 95 200)"/>
+    <ellipse cx="155" cy="230" rx="6" ry="3" transform="rotate(-15 155 230)"/>
+    <ellipse cx="350" cy="200" rx="7" ry="3" transform="rotate(25 350 200)"/>
+  </g>
+  <!-- Simple room interior -->
+  <rect x="200" y="100" width="200" height="150" fill="none" stroke="#8b7355" stroke-width="2"/>
+  <line x1="200" y1="100" x2="400" y2="100" stroke="#8b7355" stroke-width="3"/>
+  <!-- Sparse furnishing - a vase -->
+  <path d="M290 200 Q285 180 290 160 Q295 155 300 160 Q305 180 300 200Z" fill="#c4a882" stroke="#8b6b4a" stroke-width="1"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs><linearGradient id="s1bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f8f4ee"/><stop offset="100%" style="stop-color:#ede5d8"/></linearGradient></defs>
+  <rect width="500" height="300" fill="url(#s1bg)"/>
+  <!-- Bridge -->
+  <path d="M150 220 Q250 180 350 220" fill="none" stroke="#8b7355" stroke-width="4"/>
+  <rect x="180" y="220" width="4" height="30" fill="#8b7355"/><rect x="316" y="220" width="4" height="30" fill="#8b7355"/>
+  <!-- Water -->
+  <path d="M0 250 Q125 240 250 250 Q375 260 500 250 L500 300 L0 300Z" fill="#b8d4e3" opacity="0.4"/>
+  <!-- Petals on water -->
+  <circle cx="200" cy="260" r="3" fill="#f0a0a0" opacity="0.7"/><circle cx="280" cy="265" r="2.5" fill="#f0a0a0" opacity="0.6"/>
+  <circle cx="350" cy="258" r="2" fill="#f0a0a0" opacity="0.5"/><circle cx="150" cy="270" r="2.5" fill="#f0a0a0" opacity="0.6"/>
+  <!-- Willow -->
+  <path d="M50 100 Q45 150 50 200" stroke="#6b8e6b" stroke-width="2" fill="none"/>
+  <path d="M50 120 Q30 160 25 200" stroke="#7a9e7a" stroke-width="1" fill="none" opacity="0.7"/>
+  <path d="M50 130 Q70 170 65 210" stroke="#7a9e7a" stroke-width="1" fill="none" opacity="0.6"/>
+  <!-- Pavilion -->
+  <g transform="translate(220,100)"><path d="M0 50 L30 20 L60 50" fill="none" stroke="#6b4423" stroke-width="2.5"/>
+  <rect x="10" y="50" width="4" height="35" fill="#6b4423"/><rect x="46" y="50" width="4" height="35" fill="#6b4423"/></g>
+</svg>

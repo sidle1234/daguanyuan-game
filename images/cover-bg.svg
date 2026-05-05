@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 1200">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f0e8"/>
+      <stop offset="60%" style="stop-color:#e8ddd0"/>
+      <stop offset="100%" style="stop-color:#d4c5b0"/>
+    </linearGradient>
+    <filter id="ink">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+  <rect width="750" height="1200" fill="url(#sky)"/>
+  <!-- Mountains -->
+  <path d="M0 800 Q100 600 200 750 Q300 500 400 700 Q500 450 600 650 Q700 550 750 700 L750 1200 L0 1200Z" fill="#c4b39a" opacity="0.3"/>
+  <path d="M0 900 Q150 700 300 850 Q450 650 550 800 Q650 700 750 850 L750 1200 L0 1200Z" fill="#a89279" opacity="0.25"/>
+  <!-- Pavilion silhouette -->
+  <g transform="translate(300, 550)" opacity="0.4">
+    <path d="M0 80 L75 20 L150 80" fill="none" stroke="#5c4033" stroke-width="3"/>
+    <path d="M-10 80 L75 10 L160 80" fill="none" stroke="#5c4033" stroke-width="2"/>
+    <rect x="30" y="80" width="10" height="60" fill="#5c4033"/>
+    <rect x="110" y="80" width="10" height="60" fill="#5c4033"/>
+    <rect x="20" y="140" width="110" height="5" fill="#5c4033"/>
+  </g>
+  <!-- Falling petals -->
+  <circle cx="150" cy="300" r="4" fill="#e8a0a0" opacity="0.6"/>
+  <circle cx="400" cy="200" r="3" fill="#e8a0a0" opacity="0.5"/>
+  <circle cx="600" cy="350" r="3.5" fill="#e8a0a0" opacity="0.4"/>
+  <circle cx="250" cy="450" r="3" fill="#e8a0a0" opacity="0.5"/>
+  <circle cx="550" cy="500" r="4" fill="#e8a0a0" opacity="0.3"/>
+  <!-- Water ripples -->
+  <ellipse cx="375" cy="1050" rx="300" ry="30" fill="none" stroke="#8ba0b0" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="375" cy="1080" rx="250" ry="20" fill="none" stroke="#8ba0b0" stroke-width="0.8" opacity="0.2"/>
+  <!-- Bamboo left -->
+  <g opacity="0.3">
+    <line x1="50" y1="400" x2="50" y2="1000" stroke="#4a7a4a" stroke-width="3"/>
+    <line x1="80" y1="350" x2="80" y2="950" stroke="#4a7a4a" stroke-width="2.5"/>
+    <path d="M50 450 Q30 440 20 460" fill="#5a8a5a" opacity="0.7"/>
+    <path d="M50 550 Q70 540 80 560" fill="#5a8a5a" opacity="0.6"/>
+    <path d="M80 400 Q100 390 110 410" fill="#5a8a5a" opacity="0.7"/>
+  </g>
+</svg>

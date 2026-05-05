@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs><linearGradient id="s7bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f5f5f8"/><stop offset="100%" style="stop-color:#e8e8f0"/></linearGradient></defs>
+  <rect width="500" height="300" fill="url(#s7bg)"/>
+  <!-- Plum blossoms -->
+  <path d="M100 280 Q120 200 150 150 Q180 100 220 60" fill="none" stroke="#4a2020" stroke-width="3"/>
+  <path d="M150 150 Q180 130 200 140" fill="none" stroke="#4a2020" stroke-width="2"/>
+  <path d="M180 100 Q160 80 170 60" fill="none" stroke="#4a2020" stroke-width="1.5"/>
+  <g fill="#d04050">
+    <circle cx="220" cy="60" r="6"/><circle cx="200" cy="140" r="5"/><circle cx="170" cy="60" r="5"/>
+    <circle cx="155" cy="145" r="4"/><circle cx="230" cy="75" r="4"/>
+  </g>
+  <g fill="#f06070" opacity="0.6">
+    <circle cx="215" cy="55" r="3"/><circle cx="195" cy="135" r="2.5"/><circle cx="165" cy="55" r="2.5"/>
+  </g>
+  <!-- Temple/nunnery -->
+  <rect x="300" y="130" width="150" height="120" fill="#e8e5e0" stroke="#8b8080" stroke-width="2"/>
+  <path d="M290 130 L375 90 L460 130" fill="none" stroke="#5c4040" stroke-width="2.5"/>
+  <!-- Incense -->
+  <path d="M370 160 Q372 140 368 120 Q370 100 372 80" fill="none" stroke="#aaa" stroke-width="0.8" opacity="0.5"/>
+</svg>

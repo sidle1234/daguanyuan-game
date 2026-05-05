@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs><linearGradient id="s3bg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#fdf5f0"/><stop offset="100%" style="stop-color:#f5e8e0"/></linearGradient></defs>
+  <rect width="500" height="300" fill="url(#s3bg)"/>
+  <!-- Crabapple flowers -->
+  <g fill="#e88090">
+    <circle cx="200" cy="80" r="8" opacity="0.8"/><circle cx="220" cy="70" r="6" opacity="0.7"/>
+    <circle cx="185" cy="65" r="7" opacity="0.6"/><circle cx="240" cy="85" r="5" opacity="0.7"/>
+    <circle cx="170" cy="90" r="6" opacity="0.5"/><circle cx="260" cy="75" r="7" opacity="0.6"/>
+  </g>
+  <g fill="#f0a0a8" opacity="0.5">
+    <circle cx="300" cy="60" r="5"/><circle cx="320" cy="75" r="4"/><circle cx="150" cy="75" r="4"/>
+  </g>
+  <!-- Branch -->
+  <path d="M100 100 Q200 60 350 80" fill="none" stroke="#6b4423" stroke-width="2.5"/>
+  <path d="M200 75 Q220 50 240 60" fill="none" stroke="#6b4423" stroke-width="1.5"/>
+  <!-- Building -->
+  <rect x="100" y="160" width="300" height="120" fill="#f5e6d0" stroke="#8b6b4a" stroke-width="2"/>
+  <rect x="200" y="180" width="100" height="100" fill="#8b6b4a" opacity="0.3"/>
+  <path d="M80 160 L250 120 L420 160" fill="none" stroke="#6b4423" stroke-width="3"/>
+</svg>
