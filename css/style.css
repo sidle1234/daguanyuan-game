@@ -90,5 +90,8 @@ body{font-family:"STKaiti","KaiTi","Noto Serif SC",serif;background:var(--bg);co
 /* Share panel */
 .share-panel { text-align: center; padding: 30px 20px; }
 .share-panel h3 { color: var(--primary); margin-bottom: 15px; }
+.share-panel p { margin: 10px 0; line-height: 1.8; }
+.share-arrow { font-size: 3em; color: var(--accent); animation: bounceArrow 1s infinite; }
+@keyframes bounceArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 .share-url-box { background: #f5f0e8; border: 1px solid #ddd; border-radius: 8px; padding: 10px; font-size: 0.85em; word-break: break-all; margin: 15px 0; color: #666; }
-.share-tip { color: var(--text-light); font-size: 0.85em; margin-top: 10px; }
+.share-tip { color: var(--text-light); font-size: 0.85em; margin-top: 15px; font-style: italic; }

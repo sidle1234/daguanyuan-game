@@ -265,41 +265,71 @@ class GameUI {
 
   triggerShare(onSuccess) {
     const shareData = {
-      title: '\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0',
-      text: '\u6211\u5728\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0\u4e2d\u9047\u5230\u4e86\u96be\u9898\uff0c\u5feb\u6765\u5e2e\u6211\u52a9\u529b\u590d\u6d3b\uff01',
+      title: '大观园寻梦记',
+      text: '我在大观园寻梦记中遇到了难题，快来帮我助力复活！',
       url: window.location.href
     };
+    // Try Web Share API first (works on mobile browsers including WeChat)
     if (navigator.share) {
       navigator.share(shareData).then(() => {
         onSuccess();
       }).catch(() => {
-        this.showShareFallback(onSuccess);
+        this.showShareGuide(onSuccess);
       });
     } else {
-      this.showShareFallback(onSuccess);
+      this.showShareGuide(onSuccess);
     }
   }
 
-  showShareFallback(onSuccess) {
+  showShareGuide(onSuccess) {
     const qa = document.getElementById('quiz-area');
-    qa.innerHTML = '<div class="share-panel"><h3>\u5206\u4eab\u590d\u6d3b</h3><p>\u8bf7\u5c06\u6e38\u620f\u5206\u4eab\u7ed9\u4e00\u4f4d\u597d\u53cb</p><p class="share-url-box">' + window.location.href + '</p><button class="revive-btn" id="btn-copy-link">\u590d\u5236\u94fe\u63a5</button><p class="share-tip">\u590d\u5236\u540e\u53d1\u9001\u7ed9\u597d\u53cb\uff0c\u5373\u53ef\u590d\u6d3b</p></div>';
-    document.getElementById('btn-copy-link').addEventListener('click', () => {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          document.getElementById('btn-copy-link').textContent = '\u2705 \u5df2\u590d\u5236\uff0c\u8bf7\u53d1\u9001\u7ed9\u597d\u53cb';
-          setTimeout(() => onSuccess(), 1500);
-        });
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = window.location.href;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        document.getElementById('btn-copy-link').textContent = '\u2705 \u5df2\u590d\u5236\uff0c\u8bf7\u53d1\u9001\u7ed9\u597d\u53cb';
-        setTimeout(() => onSuccess(), 1500);
-      }
-    });
+    const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+    if (isWeChat) {
+      // WeChat: guide user to use top-right "..." menu to share
+      qa.innerHTML = '<div class="share-panel">' +
+        '<div class="share-arrow">↗</div>' +
+        '<h3>分享复活</h3>' +
+        '<p>请点击右上角 <strong>...</strong> 按钮</p>' +
+        '<p>选择「发送给朋友」或「分享到朋友圈」</p>' +
+        '<p class="share-tip">分享完成后返回，自动复活</p></div>';
+      // Detect user leaving and coming back (visibilitychange)
+      const handler = () => {
+        if (document.visibilityState === 'visible') {
+          document.removeEventListener('visibilitychange', handler);
+          onSuccess();
+        }
+      };
+      document.addEventListener('visibilitychange', handler);
+    } else {
+      // Non-WeChat: show share options with copy link
+      qa.innerHTML = '<div class="share-panel">' +
+        '<h3>分享复活</h3>' +
+        '<p>请将游戏分享给一位好友</p>' +
+        '<p class="share-url-box">' + window.location.href + '</p>' +
+        '<button class="revive-btn" id="btn-copy-link">复制链接并发送</button>' +
+        '<p class="share-tip">复制后发送给好友，返回即可复活</p></div>';
+      document.getElementById('btn-copy-link').addEventListener('click', () => {
+        const url = window.location.href;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(() => {
+            document.getElementById('btn-copy-link').textContent = '✅ 已复制';
+          });
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = url; document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta);
+          document.getElementById('btn-copy-link').textContent = '✅ 已复制';
+        }
+      });
+      // Detect user leaving to share and coming back
+      const handler = () => {
+        if (document.visibilityState === 'visible') {
+          document.removeEventListener('visibilitychange', handler);
+          onSuccess();
+        }
+      };
+      document.addEventListener('visibilitychange', handler);
+    }
   }
 
   getCharacterEmoji(id) {
