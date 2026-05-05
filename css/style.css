@@ -63,3 +63,8 @@ body{font-family:"STKaiti","KaiTi","Noto Serif SC",serif;background:var(--bg);co
 .final-stats{text-align:left;background:#fdf8f0;border-radius:10px;padding:15px;font-size:.95em;line-height:2}
 #poster-canvas{display:none;max-width:100%;margin-top:20px;border-radius:10px;box-shadow:var(--shadow)}
 @media(max-width:400px){.cover-title{font-size:1.8em}.character-card{padding:25px 20px}}
+
+/* iPhone safe area */
+@supports(padding: env(safe-area-inset-top)) {
+  body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+}
