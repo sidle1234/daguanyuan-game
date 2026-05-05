@@ -1,4 +1,4 @@
-const { GAME_DATA } = require('../js/data.js');
+ï»¿const { GAME_DATA } = require('../js/data.js');
 const { GameEngine } = require('../js/engine.js');
 const { GameStorage } = require('../js/storage.js');
 
@@ -15,96 +15,96 @@ function assert(cond, msg) { if (!cond) throw new Error(msg || 'Assertion failed
 function assertEqual(a, b, msg) { if (a !== b) throw new Error(msg || 'Expected ' + b + ', got ' + a); }
 
 // === Data Integrity ===
-describe('Êı¾İÍêÕûĞÔ', () => {
-  it('13¸ö½ÇÉ«', () => assertEqual(GAME_DATA.characters.length, 13));
-  it('8¸ö³¡¾°', () => assertEqual(GAME_DATA.scenes.length, 8));
-  it('16ÖÖĞÅÎï', () => assertEqual(Object.keys(GAME_DATA.items).length, 16));
-  it('3ÖÖ½á¾Ö', () => assertEqual(Object.keys(GAME_DATA.endings).length, 3));
-  it('Ã¿³¡¾°3Ìâ', () => { GAME_DATA.scenes.forEach(s => assertEqual(s.questions.length, 3, s.name)); });
-  it('Ã¿³¡¾°2Ñ¡Ïî', () => { GAME_DATA.scenes.forEach(s => assertEqual(s.choices.length, 2, s.name)); });
-  it('´ğ°¸Ë÷ÒıÓĞĞ§', () => { GAME_DATA.scenes.forEach(s => s.questions.forEach((q,i) => assert(q.answer >= 0 && q.answer < q.options.length, s.name+' Q'+(i+1)))); });
-  it('½ÇÉ«Ìì¸³ÍêÕû', () => { GAME_DATA.characters.forEach(c => assert(c.talentEffect && c.name && c.poem && c.talent, c.id)); });
-  it('ĞÅÎïÒıÓÃÓĞĞ§', () => { GAME_DATA.scenes.forEach(s => { if(s.itemDrop) assert(GAME_DATA.items[s.itemDrop], s.name+' drop:'+s.itemDrop); s.choices.forEach(ch => { if(ch.reward.item) assert(GAME_DATA.items[ch.reward.item], s.name+' choice item:'+ch.reward.item); }); }); });
+describe('æ•°æ®å®Œæ•´æ€§', () => {
+  it('13ä¸ªè§’è‰²', () => assertEqual(GAME_DATA.characters.length, 13));
+  it('8ä¸ªåœºæ™¯', () => assertEqual(GAME_DATA.scenes.length, 8));
+  it('16ç§ä¿¡ç‰©', () => assertEqual(Object.keys(GAME_DATA.items).length, 16));
+  it('3ç§ç»“å±€', () => assertEqual(Object.keys(GAME_DATA.endings).length, 3));
+  it('æ¯åœºæ™¯3é¢˜', () => { GAME_DATA.scenes.forEach(s => assertEqual(s.questions.length, 3, s.name)); });
+  it('æ¯åœºæ™¯2é€‰é¡¹', () => { GAME_DATA.scenes.forEach(s => assertEqual(s.choices.length, 2, s.name)); });
+  it('ç­”æ¡ˆç´¢å¼•æœ‰æ•ˆ', () => { GAME_DATA.scenes.forEach(s => s.questions.forEach((q,i) => assert(q.answer >= 0 && q.answer < q.options.length, s.name+' Q'+(i+1)))); });
+  it('è§’è‰²å¤©èµ‹å®Œæ•´', () => { GAME_DATA.characters.forEach(c => assert(c.talentEffect && c.name && c.poem && c.talent, c.id)); });
+  it('ä¿¡ç‰©å¼•ç”¨æœ‰æ•ˆ', () => { GAME_DATA.scenes.forEach(s => { if(s.itemDrop) assert(GAME_DATA.items[s.itemDrop], s.name+' drop:'+s.itemDrop); s.choices.forEach(ch => { if(ch.reward.item) assert(GAME_DATA.items[ch.reward.item], s.name+' choice item:'+ch.reward.item); }); }); });
 });
 
 // === Engine Basics ===
-describe('ÒıÇæ»ù´¡', () => {
-  it('´´½¨ĞÂÓÎÏ·', () => { const e = new GameEngine(GAME_DATA); const s = e.newGame(); assertEqual(s.currentScene, 0); assertEqual(s.score, 0); });
-  it('¼ÓÔØ´æµµ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); const s = JSON.parse(JSON.stringify(e.state)); s.score = 999; const e2 = new GameEngine(GAME_DATA); e2.loadState(s); assertEqual(e2.state.score, 999); });
-  it('»ñÈ¡µ±Ç°³¡¾°', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.getCurrentScene().id, 'qinfang_ting'); });
-  it('Í¨¹Ø½øÈëÏÂÒ»³¡¾°', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.completeScene(); assertEqual(e.getCurrentScene().id, 'xiaoxiang_guan'); });
-  it('È«Í¨¹ØºóÎŞ³¡¾°', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); for(let i=0;i<8;i++) e.completeScene(); assertEqual(e.getCurrentScene(), null); });
+describe('å¼•æ“åŸºç¡€', () => {
+  it('åˆ›å»ºæ–°æ¸¸æˆ', () => { const e = new GameEngine(GAME_DATA); const s = e.newGame(); assertEqual(s.currentScene, 0); assertEqual(s.score, 0); });
+  it('åŠ è½½å­˜æ¡£', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); const s = JSON.parse(JSON.stringify(e.state)); s.score = 999; const e2 = new GameEngine(GAME_DATA); e2.loadState(s); assertEqual(e2.state.score, 999); });
+  it('è·å–å½“å‰åœºæ™¯', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.getCurrentScene().id, 'qinfang_ting'); });
+  it('é€šå…³è¿›å…¥ä¸‹ä¸€åœºæ™¯', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.completeScene(); assertEqual(e.getCurrentScene().id, 'xiaoxiang_guan'); });
+  it('å…¨é€šå…³åæ— åœºæ™¯', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); for(let i=0;i<8;i++) e.completeScene(); assertEqual(e.getCurrentScene(), null); });
 });
 
 // === Talent Tests (each character) ===
-describe('¼Ö±¦Óñ - ¶îÍâÈİ´í+Òş²ØÏßË÷', () => {
-  it('ÉúÃü4', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); assertEqual(e.getLives(), 4); });
-  it('ÓĞÒş²ØÏßË÷', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); assert(e.getHiddenClue() !== null); });
+describe('è´¾å®ç‰ - é¢å¤–å®¹é”™+éšè—çº¿ç´¢', () => {
+  it('ç”Ÿå‘½4', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); assertEqual(e.getLives(), 4); });
+  it('æœ‰éšè—çº¿ç´¢', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); assert(e.getHiddenClue() !== null); });
 });
 
-describe('ÁÖ÷ìÓñ - Ê«´Ê·­±¶+´ğ´í²»¿Û·Ö', () => {
-  it('Ê«´ÊÌâ100·Ö', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.completeScene(); const pq = e.getCurrentScene().questions.find(q=>q.category==='poetry'); assertEqual(e.calculateQuestionScore(pq), 100); });
-  it('´ğ´ípenalty=0', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); const r = e.answerQuestion(0, 2); assertEqual(r.penalty, 0); });
+describe('æ—é»›ç‰ - è¯—è¯ç¿»å€+ç­”é”™ä¸æ‰£åˆ†', () => {
+  it('è¯—è¯é¢˜100åˆ†', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.completeScene(); const pq = e.getCurrentScene().questions.find(q=>q.category==='poetry'); assertEqual(e.calculateQuestionScore(pq), 100); });
+  it('ç­”é”™penalty=0', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); const r = e.answerQuestion(0, 2); assertEqual(r.penalty, 0); });
 });
 
-describe('Ñ¦±¦îÎ - ¶îÍâ´ğÌâ»ú»á', () => {
-  it('ÉúÃü4', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('xue_baochai'); assertEqual(e.getLives(), 4); });
+describe('è–›å®é’— - é¢å¤–ç­”é¢˜æœºä¼š', () => {
+  it('ç”Ÿå‘½4', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('xue_baochai'); assertEqual(e.getLives(), 4); });
 });
 
-describe('ÍõÎõ·ï - ¶îÍâĞÅÎï', () => {
-  it('Ñ¡BÒ²µÃĞÅÎï', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('wang_xifeng'); e.makeChoice(1); assert(e.state.items.length > 0); });
+describe('ç‹ç†™å‡¤ - é¢å¤–ä¿¡ç‰©', () => {
+  it('é€‰Bä¹Ÿå¾—ä¿¡ç‰©', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('wang_xifeng'); e.makeChoice(1); assert(e.state.items.length > 0); });
 });
 
-describe('Ê·ÏæÔÆ - ³£Ê¶×Ô¶¯´ğ¶Ô', () => {
-  it('´ğ´ícommon×Ô¶¯¶Ô', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('shi_xiangyun'); const r = e.answerQuestion(0, 0); assertEqual(r.correct, true); assertEqual(r.autoCorrect, true); });
+describe('å²æ¹˜äº‘ - å¸¸è¯†è‡ªåŠ¨ç­”å¯¹', () => {
+  it('ç­”é”™commonè‡ªåŠ¨å¯¹', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('shi_xiangyun'); const r = e.answerQuestion(0, 0); assertEqual(r.correct, true); assertEqual(r.autoCorrect, true); });
 });
 
-describe('¼ÖÌ½´º - ·¬Íâ¾çÇé', () => {
-  it('ÓĞ·¬Íâ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_tanchun'); assert(e.getBonusStory() !== null); });
-  it('·ÇÌ½´ºÎŞ·¬Íâ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.getBonusStory(), null); });
+describe('è´¾æ¢æ˜¥ - ç•ªå¤–å‰§æƒ…', () => {
+  it('æœ‰ç•ªå¤–', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_tanchun'); assert(e.getBonusStory() !== null); });
+  it('éæ¢æ˜¥æ— ç•ªå¤–', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.getBonusStory(), null); });
 });
 
-describe('ÃîÓñ - Ï¡ÓĞĞÅÎïÌáÉı', () => {
-  it('Ìì¸³ÉèÖÃÕıÈ·', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('miao_yu'); assertEqual(e.state.character.talentEffect.rareItemBoost, true); });
+describe('å¦™ç‰ - ç¨€æœ‰ä¿¡ç‰©æå‡', () => {
+  it('å¤©èµ‹è®¾ç½®æ­£ç¡®', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('miao_yu'); assertEqual(e.state.character.talentEffect.rareItemBoost, true); });
 });
 
-describe('Àîæı - »ı·Ö¼ÓËÙ', () => {
-  it('Ñ¡AµÃ150·Ö(100*1.5)', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('li_wan'); e.makeChoice(0); assertEqual(e.state.score, 150); });
-  it('´ğÌâ75·Ö(50*1.5)', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('li_wan'); assertEqual(e.calculateQuestionScore({category:'common'}), 75); });
+describe('æçº¨ - ç§¯åˆ†åŠ é€Ÿ', () => {
+  it('é€‰Aå¾—150åˆ†(100*1.5)', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('li_wan'); e.makeChoice(0); assertEqual(e.state.score, 150); });
+  it('ç­”é¢˜75åˆ†(50*1.5)', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('li_wan'); assertEqual(e.calculateQuestionScore({category:'common'}), 75); });
 });
 
-describe('¼ÖÓ­´º - ¸´»î¼õ°ë', () => {
-  it('µÈ´ı15·ÖÖÓ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_yingchun'); assertEqual(e.revive('wait').waitMinutes, 15); });
-  it('ÆäËû½ÇÉ«30·ÖÖÓ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.revive('wait').waitMinutes, 30); });
+describe('è´¾è¿æ˜¥ - å¤æ´»å‡åŠ', () => {
+  it('ç­‰å¾…15åˆ†é’Ÿ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_yingchun'); assertEqual(e.revive('wait').waitMinutes, 15); });
+  it('å…¶ä»–è§’è‰²30åˆ†é’Ÿ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.revive('wait').waitMinutes, 30); });
 });
 
-describe('¼ÖÏ§´º - Ãâ·ÑÌáÊ¾', () => {
-  it('¿ÉÓÃÌáÊ¾', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_xichun'); const h = e.useHint(0); assertEqual(h.success, true); assertEqual(h.answer, 1); });
-  it('·ÇÏ§´º²»¿ÉÓÃ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.useHint(0).success, false); });
+describe('è´¾æƒœæ˜¥ - å…è´¹æç¤º', () => {
+  it('å¯ç”¨æç¤º', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_xichun'); const h = e.useHint(0); assertEqual(h.success, true); assertEqual(h.answer, 1); });
+  it('éæƒœæ˜¥ä¸å¯ç”¨', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.useHint(0).success, false); });
 });
 
-describe('ÇØ¿ÉÇä - ºÃ¸Ğ¶È+5', () => {
-  it('È«½ÇÉ«ºÃ¸Ğ5', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('qin_keqing'); Object.values(e.state.affinity).forEach(v => assertEqual(v, 5)); });
-  it('ÆäËû½ÇÉ«ºÃ¸Ğ0', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); Object.values(e.state.affinity).forEach(v => assertEqual(v, 0)); });
+describe('ç§¦å¯å¿ - å¥½æ„Ÿåº¦+5', () => {
+  it('å…¨è§’è‰²å¥½æ„Ÿ5', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('qin_keqing'); Object.values(e.state.affinity).forEach(v => assertEqual(v, 5)); });
+  it('å…¶ä»–è§’è‰²å¥½æ„Ÿ0', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); Object.values(e.state.affinity).forEach(v => assertEqual(v, 0)); });
 });
 
-describe('ÇÉ½ã - ·ÖÏí·­±¶', () => {
-  it('·ÖÏíµÃ100', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('qiao_jie'); e.revive('share'); assertEqual(e.state.score, 100); });
-  it('ÆäËû½ÇÉ«µÃ50', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.revive('share'); assertEqual(e.state.score, 50); });
+describe('å·§å§ - åˆ†äº«ç¿»å€', () => {
+  it('åˆ†äº«å¾—100', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('qiao_jie'); e.revive('share'); assertEqual(e.state.score, 100); });
+  it('å…¶ä»–è§’è‰²å¾—50', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.revive('share'); assertEqual(e.state.score, 50); });
 });
 
-describe('ÏãÁâ - ×Ô¶¯Ê«´Ê', () => {
-  it('Ñ¡Ôñºó½âËøÊ«´Ê', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('xiang_ling'); e.makeChoice(0); assert(e.state.poems.length > 0); });
-  it('ÆäËû½ÇÉ«ÎŞÊ«´Ê', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.makeChoice(0); assertEqual(e.state.poems.length, 0); });
+describe('é¦™è± - è‡ªåŠ¨è¯—è¯', () => {
+  it('é€‰æ‹©åè§£é”è¯—è¯', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('xiang_ling'); e.makeChoice(0); assert(e.state.poems.length > 0); });
+  it('å…¶ä»–è§’è‰²æ— è¯—è¯', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.makeChoice(0); assertEqual(e.state.poems.length, 0); });
 });
 
 // === Full Path: All correct for each character ===
-describe('È«½ÇÉ«È«ÕıÈ·Í¨¹Ø', () => {
+describe('å…¨è§’è‰²å…¨æ­£ç¡®é€šå…³', () => {
   GAME_DATA.characters.forEach(character => {
-    it(character.name + ' È«ÕıÈ·Í¨¹Ø', () => {
+    it(character.name + ' å…¨æ­£ç¡®é€šå…³', () => {
       const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter(character.id);
       for (let si = 0; si < 8; si++) {
-        const scene = e.getCurrentScene(); assert(scene !== null, '³¡¾°'+si+'Îªnull');
+        const scene = e.getCurrentScene(); assert(scene !== null, 'åœºæ™¯'+si+'ä¸ºnull');
         e.makeChoice(0);
         for (let qi = 0; qi < scene.questions.length; qi++) {
           const r = e.answerQuestion(qi, scene.questions[qi].answer);
@@ -119,9 +119,9 @@ describe('È«½ÇÉ«È«ÕıÈ·Í¨¹Ø', () => {
 });
 
 // === Full Path: All wrong + revive ===
-describe('È«½ÇÉ«´ğ´í¸´»î', () => {
+describe('å…¨è§’è‰²ç­”é”™å¤æ´»', () => {
   GAME_DATA.characters.forEach(character => {
-    it(character.name + ' ´ğ´í¸´»î', () => {
+    it(character.name + ' ç­”é”™å¤æ´»', () => {
       const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter(character.id);
       e.makeChoice(0);
       const lives = e.getLives();
@@ -136,8 +136,8 @@ describe('È«½ÇÉ«´ğ´í¸´»î', () => {
 });
 
 // === Choice B path ===
-describe('Ñ¡ÏîBÂ·¾¶', () => {
-  it('È«³¡¾°Ñ¡BÍ¨¹Ø', () => {
+describe('é€‰é¡¹Bè·¯å¾„', () => {
+  it('å…¨åœºæ™¯é€‰Bé€šå…³', () => {
     const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu');
     for (let si = 0; si < 8; si++) {
       const scene = e.getCurrentScene();
@@ -150,41 +150,41 @@ describe('Ñ¡ÏîBÂ·¾¶', () => {
 });
 
 // === Endings ===
-describe('½á¾ÖÏµÍ³', () => {
-  it('Ñ¡A¡ú·±»ªÒ»ÃÎ', () => {
+describe('ç»“å±€ç³»ç»Ÿ', () => {
+  it('é€‰Aâ†’ç¹åä¸€æ¢¦', () => {
     const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu');
     for(let i=0;i<7;i++){e.makeChoice(0);e.completeScene();}
-    e.makeChoice(0); assertEqual(e.getEnding().title, '·±»ªÒ»ÃÎ');
+    e.makeChoice(0); assertEqual(e.getEnding().title, 'ç¹åä¸€æ¢¦');
   });
-  it('Ñ¡B¡úÇåÑÅÑ°·¼', () => {
+  it('é€‰Bâ†’æ¸…é›…å¯»èŠ³', () => {
     const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu');
     for(let i=0;i<7;i++){e.makeChoice(0);e.completeScene();}
-    e.makeChoice(1); assertEqual(e.getEnding().title, 'ÇåÑÅÑ°·¼');
+    e.makeChoice(1); assertEqual(e.getEnding().title, 'æ¸…é›…å¯»èŠ³');
   });
-  it('12+ĞÅÎï¡úºìÂ¥ÑÅ¿Í', () => {
+  it('12+ä¿¡ç‰©â†’çº¢æ¥¼é›…å®¢', () => {
     const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('wang_xifeng');
     Object.keys(GAME_DATA.items).slice(0,12).forEach(id => e.addItem(id));
-    e.makeChoice(0); assertEqual(e.getEnding().title, 'ºìÂ¥ÑÅ¿Í');
+    e.makeChoice(0); assertEqual(e.getEnding().title, 'çº¢æ¥¼é›…å®¢');
   });
 });
 
 // === Items ===
-describe('ĞÅÎïÏµÍ³', () => {
-  it('²»ÖØ¸´Ìí¼Ó', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.addItem('hua_ban_jian'); e.addItem('hua_ban_jian'); assertEqual(e.state.items.length, 1); });
-  it('null²»Ìí¼Ó', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.addItem(null); assertEqual(e.state.items.length, 0); });
+describe('ä¿¡ç‰©ç³»ç»Ÿ', () => {
+  it('ä¸é‡å¤æ·»åŠ ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.addItem('hua_ban_jian'); e.addItem('hua_ban_jian'); assertEqual(e.state.items.length, 1); });
+  it('nullä¸æ·»åŠ ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.addItem(null); assertEqual(e.state.items.length, 0); });
 });
 
 // === Affinity ===
-describe('ºÃ¸Ğ¶È', () => {
-  it('Ñ¡A¼ÓºÃ¸Ğ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); e.makeChoice(0); assertEqual(e.state.affinity.lin_daiyu, 5); });
-  it('Ñ¡B²»¼ÓºÃ¸Ğ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); e.makeChoice(1); assertEqual(e.state.affinity.lin_daiyu, 0); });
+describe('å¥½æ„Ÿåº¦', () => {
+  it('é€‰AåŠ å¥½æ„Ÿ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); e.makeChoice(0); assertEqual(e.state.affinity.lin_daiyu, 5); });
+  it('é€‰Bä¸åŠ å¥½æ„Ÿ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('jia_baoyu'); e.makeChoice(1); assertEqual(e.state.affinity.lin_daiyu, 0); });
 });
 
 // === Storage ===
-describe('´æ´¢ÏµÍ³', () => {
-  it('ÎŞstorage·µ»Øfalse', () => { const s = new GameStorage(); s.storage = null; assertEqual(s.save({x:1}), false); });
-  it('ÎŞstorage·µ»Ønull', () => { const s = new GameStorage(); s.storage = null; assertEqual(s.load(), null); });
-  it('Ä£Äâ´æÈ¡', () => {
+describe('å­˜å‚¨ç³»ç»Ÿ', () => {
+  it('æ— storageè¿”å›false', () => { const s = new GameStorage(); s.storage = null; assertEqual(s.save({x:1}), false); });
+  it('æ— storageè¿”å›null', () => { const s = new GameStorage(); s.storage = null; assertEqual(s.load(), null); });
+  it('æ¨¡æ‹Ÿå­˜å–', () => {
     const mock = {}; const s = new GameStorage('k');
     s.storage = { setItem:(k,v)=>{mock[k]=v;}, getItem:(k)=>mock[k]||null, removeItem:(k)=>{delete mock[k];} };
     s.save({character:'lin_daiyu',score:100});
@@ -193,18 +193,18 @@ describe('´æ´¢ÏµÍ³', () => {
 });
 
 // === Edge Cases ===
-describe('±ß½çÇé¿ö', () => {
-  it('ÎŞĞ§Ñ¡Ôñ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.makeChoice(5).success, false); });
-  it('¸ºÊıÑ¡Ôñ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.makeChoice(-1).success, false); });
-  it('ÎŞĞ§ÌâÄ¿', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.answerQuestion(10, 0).success, false); });
-  it('ÎŞĞ§¸´»î', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.revive('invalid').success, false); });
-  it('Ëæ»ú½ÇÉ«ÓĞĞ§', () => { const e = new GameEngine(GAME_DATA); e.newGame(); const c = e.assignCharacter(); assert(GAME_DATA.characters.map(x=>x.id).includes(c.id)); });
-  it('getStatsÍêÕû', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.makeChoice(0); e.completeScene(); const s = e.getStats(); assert(s.character!==null); assert(s.score>0); assertEqual(s.scenesCompleted,1); });
+describe('è¾¹ç•Œæƒ…å†µ', () => {
+  it('æ— æ•ˆé€‰æ‹©', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.makeChoice(5).success, false); });
+  it('è´Ÿæ•°é€‰æ‹©', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.makeChoice(-1).success, false); });
+  it('æ— æ•ˆé¢˜ç›®', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.answerQuestion(10, 0).success, false); });
+  it('æ— æ•ˆå¤æ´»', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); assertEqual(e.revive('invalid').success, false); });
+  it('éšæœºè§’è‰²æœ‰æ•ˆ', () => { const e = new GameEngine(GAME_DATA); e.newGame(); const c = e.assignCharacter(); assert(GAME_DATA.characters.map(x=>x.id).includes(c.id)); });
+  it('getStatså®Œæ•´', () => { const e = new GameEngine(GAME_DATA); e.newGame(); e.assignCharacter('lin_daiyu'); e.makeChoice(0); e.completeScene(); const s = e.getStats(); assert(s.character!==null); assert(s.score>0); assertEqual(s.scenesCompleted,1); });
 });
 
 // === Results ===
 console.log('\n' + '='.repeat(60));
-console.log('?? ²âÊÔ½á¹û: ' + passed + '/' + total + ' Í¨¹ı, ' + failed + ' Ê§°Ü');
+console.log('?? æµ‹è¯•ç»“æœ: ' + passed + '/' + total + ' é€šè¿‡, ' + failed + ' å¤±è´¥');
 console.log('='.repeat(60));
-if (failures.length > 0) { console.log('\n? Ê§°Ü:'); failures.forEach((f,i) => console.log('  '+(i+1)+'. '+f.name+'\n     '+f.error)); process.exit(1); }
-else { console.log('\n?? ËùÓĞ²âÊÔÍ¨¹ı£¡'); process.exit(0); }
+if (failures.length > 0) { console.log('\n? å¤±è´¥:'); failures.forEach((f,i) => console.log('  '+(i+1)+'. '+f.name+'\n     '+f.error)); process.exit(1); }
+else { console.log('\n?? æ‰€æœ‰æµ‹è¯•é€šè¿‡ï¼'); process.exit(0); }

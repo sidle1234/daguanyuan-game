@@ -1,4 +1,4 @@
-class GameUI {
+ï»¿class GameUI {
   constructor(engine, storage) { this.engine = engine; this.storage = storage; this.currentQuestionIndex = 0; this.livesRemaining = 0; this.choiceMade = false; }
   init() { this.bindEvents(); this.showScreen('cover'); }
   bindEvents() {
@@ -24,7 +24,7 @@ class GameUI {
     document.getElementById('identity-result').innerHTML =
       '<div class="character-card"><div class="character-icon">' + this.getCharacterEmoji(character.id) + '</div>' +
       '<h2>' + character.name + '</h2><p class="poem">' + character.poem + '</p>' +
-      '<div class="talent"><span class="talent-label">×¨ÊôÌì¸³</span><p>' + character.talent + '</p></div></div>';
+      '<div class="talent"><span class="talent-label">ä¸“å±å¤©èµ‹</span><p>' + character.talent + '</p></div></div>';
     this.renderMap();
   }
   renderMap() {
@@ -43,7 +43,7 @@ class GameUI {
   }
   updateSidebar() {
     const s = document.getElementById('sidebar-stats');
-    if (s) s.innerHTML = '<div class="stat-item">»ı·Ö: '+this.engine.state.score+'</div><div class="stat-item">ĞÅÎï: '+this.engine.state.items.length+'/'+Object.keys(this.engine.data.items).length+'</div><div class="stat-item">½ø¶È: '+this.engine.state.completedScenes.length+'/8</div>';
+    if (s) s.innerHTML = '<div class="stat-item">ç§¯åˆ†: '+this.engine.state.score+'</div><div class="stat-item">ä¿¡ç‰©: '+this.engine.state.items.length+'/'+Object.keys(this.engine.data.items).length+'</div><div class="stat-item">è¿›åº¦: '+this.engine.state.completedScenes.length+'/8</div>';
   }
   enterScene() {
     const scene = this.engine.getCurrentScene(); if (!scene) return;
@@ -57,7 +57,7 @@ class GameUI {
     html += '<div class="scene-illustration scene-bg-'+scene.id+'"></div>';
     html += '<div class="scene-description"><p>'+scene.description+'</p></div>';
     const clue = this.engine.getHiddenClue();
-    if (clue) html += '<div class="hidden-clue"><span>?? Òş²ØÏßË÷£º</span>'+clue+'</div>';
+    if (clue) html += '<div class="hidden-clue"><span>?? éšè—çº¿ç´¢ï¼š</span>'+clue+'</div>';
     const bonus = this.engine.getBonusStory();
     if (bonus) html += '<div class="bonus-story"><span>?? </span>'+bonus+'</div>';
     html += '<div class="choices" id="scene-choices">';
@@ -71,7 +71,7 @@ class GameUI {
   onChoice(index) {
     const result = this.engine.makeChoice(index); if (!result.success) return;
     const cd = document.getElementById('scene-choices');
-    cd.innerHTML = '<div class="choice-result"><p>»ñµÃ»ı·Ö: +'+result.scoreGain+'</p>'+(result.reward.item?'<p>»ñµÃĞÅÎï: '+this.engine.data.items[result.reward.item].name+'</p>':'')+'</div>';
+    cd.innerHTML = '<div class="choice-result"><p>è·å¾—ç§¯åˆ†: +'+result.scoreGain+'</p>'+(result.reward.item?'<p>è·å¾—ä¿¡ç‰©: '+this.engine.data.items[result.reward.item].name+'</p>':'')+'</div>';
     setTimeout(() => this.startQuiz(), 1500);
   }
   startQuiz() { document.getElementById('quiz-area').style.display = 'block'; this.renderQuestion(); }
@@ -80,11 +80,11 @@ class GameUI {
     if (this.currentQuestionIndex >= scene.questions.length) { this.onSceneComplete(); return; }
     if (this.livesRemaining <= 0) { this.onSceneFail(); return; }
     const q = scene.questions[this.currentQuestionIndex];
-    let html = '<div class="quiz-header"><span>µÚ '+(this.currentQuestionIndex+1)+'/'+scene.questions.length+' Ìâ</span><span>Ê£Óà»ú»á: '+'??'.repeat(this.livesRemaining)+'</span></div>';
+    let html = '<div class="quiz-header"><span>ç¬¬ '+(this.currentQuestionIndex+1)+'/'+scene.questions.length+' é¢˜</span><span>å‰©ä½™æœºä¼š: '+'??'.repeat(this.livesRemaining)+'</span></div>';
     html += '<div class="question-text">'+q.text+'</div><div class="options">';
     q.options.forEach((opt, i) => { html += '<button class="option-btn" data-index="'+i+'">'+opt+'</button>'; });
     html += '</div>';
-    if (this.engine.state.character.talentEffect.freeHint) html += '<button class="hint-btn" id="btn-hint">?? Ê¹ÓÃÌáÊ¾</button>';
+    if (this.engine.state.character.talentEffect.freeHint) html += '<button class="hint-btn" id="btn-hint">?? ä½¿ç”¨æç¤º</button>';
     qa.innerHTML = html;
     qa.querySelectorAll('.option-btn').forEach(btn => { btn.addEventListener('click', (e) => this.onAnswer(parseInt(e.target.dataset.index))); });
     const hb = document.getElementById('btn-hint');
@@ -92,8 +92,8 @@ class GameUI {
   }
   onAnswer(answerIndex) {
     const result = this.engine.answerQuestion(this.currentQuestionIndex, answerIndex);
-    if (result.correct) { this.showFeedback(true, result.autoCorrect?'Ìì¸³×Ô¶¯´ğ¶Ô£¡':'»Ø´ğÕıÈ·£¡'); this.currentQuestionIndex++; }
-    else { this.livesRemaining--; this.showFeedback(false, '»Ø´ğ´íÎó'); if (this.livesRemaining <= 0) { setTimeout(() => this.onSceneFail(), 1000); return; } }
+    if (result.correct) { this.showFeedback(true, result.autoCorrect?'å¤©èµ‹è‡ªåŠ¨ç­”å¯¹ï¼':'å›ç­”æ­£ç¡®ï¼'); this.currentQuestionIndex++; }
+    else { this.livesRemaining--; this.showFeedback(false, 'å›ç­”é”™è¯¯'); if (this.livesRemaining <= 0) { setTimeout(() => this.onSceneFail(), 1000); return; } }
     setTimeout(() => this.renderQuestion(), 1200);
   }
   showFeedback(correct, msg) {
@@ -103,19 +103,19 @@ class GameUI {
   onSceneComplete() {
     this.engine.completeScene(); this.storage.save(this.engine.state);
     if (this.engine.state.currentScene >= this.engine.data.scenes.length) { this.showEnding(); }
-    else { document.getElementById('quiz-area').innerHTML = '<div class="scene-complete"><h3>?? ¹§Ï²Í¨¹Ø£¡</h3><p>¼´½«·µ»Ø´ó¹ÛÔ°µØÍ¼...</p></div>'; setTimeout(() => { this.showScreen('map'); this.renderMap(); }, 2000); }
+    else { document.getElementById('quiz-area').innerHTML = '<div class="scene-complete"><h3>?? æ­å–œé€šå…³ï¼</h3><p>å³å°†è¿”å›å¤§è§‚å›­åœ°å›¾...</p></div>'; setTimeout(() => { this.showScreen('map'); this.renderMap(); }, 2000); }
   }
   onSceneFail() {
     const qa = document.getElementById('quiz-area');
     const wt = this.engine.state.character.talentEffect.reviveTimeHalf ? 15 : 30;
-    qa.innerHTML = '<div class="scene-fail"><h3>´ğÌâ»ú»áÒÑÓÃ¾¡</h3><p>Ñ¡Ôñ¸´»î·½Ê½£º</p><button class="revive-btn" id="btn-revive-share">·ÖÏíÖÁÎ¢ĞÅ£¬Á¢¼´¸´»î</button><button class="revive-btn" id="btn-revive-wait">µÈ´ı»Ö¸´£¨'+wt+'·ÖÖÓ£©</button></div>';
+    qa.innerHTML = '<div class="scene-fail"><h3>ç­”é¢˜æœºä¼šå·²ç”¨å°½</h3><p>é€‰æ‹©å¤æ´»æ–¹å¼ï¼š</p><button class="revive-btn" id="btn-revive-share">åˆ†äº«è‡³å¾®ä¿¡ï¼Œç«‹å³å¤æ´»</button><button class="revive-btn" id="btn-revive-wait">ç­‰å¾…æ¢å¤ï¼ˆ'+wt+'åˆ†é’Ÿï¼‰</button></div>';
     document.getElementById('btn-revive-share').addEventListener('click', () => { this.engine.revive('share'); this.livesRemaining = this.engine.getLives(); this.renderQuestion(); });
-    document.getElementById('btn-revive-wait').addEventListener('click', () => { qa.innerHTML = '<div class="wait-message"><p>Çë'+wt+'·ÖÖÓºóÔÙÀ´ÌôÕ½</p></div>'; });
+    document.getElementById('btn-revive-wait').addEventListener('click', () => { qa.innerHTML = '<div class="wait-message"><p>è¯·'+wt+'åˆ†é’Ÿåå†æ¥æŒ‘æˆ˜</p></div>'; });
   }
   showEnding() {
     const ending = this.engine.getEnding(); const stats = this.engine.getStats();
     this.showScreen('ending');
-    document.getElementById('ending-content').innerHTML = '<div class="ending-card"><h2>'+ending.title+'</h2><p class="ending-text">'+ending.text+'</p><div class="final-stats"><div>Éí·İ£º'+stats.character.name+'</div><div>×Ü»ı·Ö£º'+stats.score+'</div><div>Í¨¹Ø³¡¾°£º'+stats.scenesCompleted+'/'+stats.totalScenes+'</div><div>ÊÕ¼¯ĞÅÎï£º'+stats.itemsCollected+'/'+stats.totalItems+'</div></div></div>';
+    document.getElementById('ending-content').innerHTML = '<div class="ending-card"><h2>'+ending.title+'</h2><p class="ending-text">'+ending.text+'</p><div class="final-stats"><div>èº«ä»½ï¼š'+stats.character.name+'</div><div>æ€»ç§¯åˆ†ï¼š'+stats.score+'</div><div>é€šå…³åœºæ™¯ï¼š'+stats.scenesCompleted+'/'+stats.totalScenes+'</div><div>æ”¶é›†ä¿¡ç‰©ï¼š'+stats.itemsCollected+'/'+stats.totalItems+'</div></div></div>';
     this.storage.save(this.engine.state);
   }
   generatePoster() {
@@ -136,18 +136,18 @@ class GameUI {
     canvas.style.display = 'block';
   }
   drawPosterContent(ctx, stats) {
-    ctx.fillStyle = '#4a2c17'; ctx.font = 'bold 48px serif'; ctx.textAlign = 'center'; ctx.fillText('´ó¹ÛÔ°Ñ°ÃÎ¼Ç', 375, 120);
-    ctx.font = '28px serif'; ctx.fillStyle = '#8b6914'; ctx.fillText('ºìÂ¥ÑÅ¿Í', 375, 170);
+    ctx.fillStyle = '#4a2c17'; ctx.font = 'bold 48px serif'; ctx.textAlign = 'center'; ctx.fillText('å¤§è§‚å›­å¯»æ¢¦è®°', 375, 120);
+    ctx.font = '28px serif'; ctx.fillStyle = '#8b6914'; ctx.fillText('çº¢æ¥¼é›…å®¢', 375, 170);
     ctx.font = 'bold 36px serif'; ctx.fillStyle = '#4a2c17'; ctx.fillText(stats.character.name, 375, 350);
     ctx.font = '24px serif'; ctx.fillStyle = '#666'; ctx.fillText(stats.character.poem, 375, 400);
     ctx.font = '28px sans-serif'; ctx.fillStyle = '#333';
-    ctx.fillText('Í¨¹Ø: '+stats.scenesCompleted+'/'+stats.totalScenes, 375, 550);
-    ctx.fillText('ĞÅÎï: '+stats.itemsCollected+'/'+stats.totalItems, 375, 600);
-    ctx.fillText('»ı·Ö: '+stats.score, 375, 650);
-    ctx.font = 'bold 32px serif'; ctx.fillStyle = '#8b4513'; ctx.fillText('½á¾Ö£º'+stats.ending.title, 375, 780);
+    ctx.fillText('é€šå…³: '+stats.scenesCompleted+'/'+stats.totalScenes, 375, 550);
+    ctx.fillText('ä¿¡ç‰©: '+stats.itemsCollected+'/'+stats.totalItems, 375, 600);
+    ctx.fillText('ç§¯åˆ†: '+stats.score, 375, 650);
+    ctx.font = 'bold 32px serif'; ctx.fillStyle = '#8b4513'; ctx.fillText('ç»“å±€ï¼š'+stats.ending.title, 375, 780);
     const pt = this.engine.data.posterTexts[Math.floor(Math.random()*3)];
     ctx.font = '22px serif'; ctx.fillStyle = '#999'; ctx.fillText(pt, 375, 1100);
-    ctx.font = '20px sans-serif'; ctx.fillStyle = '#aaa'; ctx.fillText('³¤°´±£´æÍ¼Æ¬£¬·ÖÏí¸øºÃÓÑ', 375, 1200);
+    ctx.font = '20px sans-serif'; ctx.fillStyle = '#aaa'; ctx.fillText('é•¿æŒ‰ä¿å­˜å›¾ç‰‡ï¼Œåˆ†äº«ç»™å¥½å‹', 375, 1200);
   }
   onRestart() { this.storage.clear(); this.engine.newGame(); this.showScreen('cover'); }
   getCharacterEmoji(id) {

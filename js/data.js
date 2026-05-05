@@ -1,151 +1,151 @@
-/**
+ï»¿/**
  * Game data configuration
  */
 const GAME_DATA = {
   characters: [
-    { id: 'jia_baoyu', name: '¼Ö±¦Óñ', poem: 'ÎŞ¹ÊÑ°³îÃÙºŞ£¬ÓĞÊ±ËÆÉµÈç¿ñ', talent: 'Ã¿¹Ø¶îÍâ»ñµÃ1ÌõÒş²ØÏßË÷£¬´ğÌâÈİ´í´ÎÊı+1', talentEffect: { extraLives: 1, hiddenClue: true } },
-    { id: 'lin_daiyu', name: 'ÁÖ÷ìÓñ', poem: '¿°Á¯Ó½Ğõ²Å£¬Óñ´øÁÖÖĞ¹Ò', talent: 'Ê«´ÊÀàÌâÄ¿»ı·Ö·­±¶£¬´ğ´í²»¿Û³ı»ı·Ö', talentEffect: { poetryDoubleScore: true, noScorePenalty: true } },
-    { id: 'xue_baochai', name: 'Ñ¦±¦îÎ', poem: '¿ÉÌ¾Í£»úµÂ£¬½ğô¢Ñ©ÀïÂñ', talent: 'Ã¿¹Ø¶îÍâÔö¼Ó1´Î´ğÌâ»ú»á£¬Í¨¹ØÎÈ¶¨ĞÔ×î¸ß', talentEffect: { extraLives: 1 } },
-    { id: 'wang_xifeng', name: 'ÍõÎõ·ï', poem: '·²ÄñÆ«´ÓÄ©ÊÀÀ´£¬¶¼Öª°®Ä½´ËÉú²Å', talent: 'Ã¿¹ØÍ¨¹Ø±Ø¶îÍâµôÂä1¸öĞÅÎï£¬ÊÕ¼¯ËÙ¶ÈÌáÉı', talentEffect: { extraItem: true } },
-    { id: 'shi_xiangyun', name: 'Ê·ÏæÔÆ', poem: 'ñßñÙÖĞ£¬¸¸Ä¸Ì¾Ë«Íö£¬Ó¢ºÀÀ«´ó¿íºêÁ¿', talent: '³£Ê¶Àà¡¢È¤Î¶ÀàÌâÄ¿×Ô¶¯ÅĞ¶¨´ğ¶Ô', talentEffect: { autoCorrectCommon: true } },
-    { id: 'jia_tanchun', name: '¼ÖÌ½´º', poem: '²Å×ÔÇåÃ÷Ö¾×Ô¸ß£¬ÉúÓÚÄ©ÊÀÔËÆ«Ïû', talent: 'Òş²Ø·¬Íâ¾çÇéÌáÇ°½âËø£¬¿É²é¿´×¨ÊôÄÚÈİ', talentEffect: { unlockBonus: true } },
-    { id: 'miao_yu', name: 'ÃîÓñ', poem: 'Óû½àºÎÔø½à£¬ÔÆ¿ÕÎ´±Ø¿Õ', talent: 'Ï¡ÓĞĞÅÎïµôÂä¸ÅÂÊ´ó·ùÌáÉı', talentEffect: { rareItemBoost: true } },
-    { id: 'li_wan', name: 'Àîæı', poem: 'ÌÒÀî´º·ç½á×ÓÍê£¬µ½Í·Ë­ËÆÒ»ÅèÀ¼', talent: 'ÓÎÏ·»ı·Ö»ñÈ¡ËÙ¶ÈÈ«Ãæ¼Ó¿ì', talentEffect: { scoreBoost: 1.5 } },
-    { id: 'jia_yingchun', name: '¼ÖÓ­´º', poem: '×ÓÏµÖĞÉ½ÀÇ£¬µÃÖ¾±ã²ş¿ñ', talent: '´³¹ØÊ§°Üºó£¬¸´»îµÈ´ıÊ±¼äÖ±½Ó¼õ°ë', talentEffect: { reviveTimeHalf: true } },
-    { id: 'jia_xichun', name: '¼ÖÏ§´º', poem: '¿ÉÁ¯Ğå»§ºîÃÅÅ®£¬¶ÀÎÔÇàµÆ¹Å·ğÅÔ', talent: 'Ã¿¹Ø¿ÉÃâ·Ñ²é¿´1´ÎÌâÄ¿´ğ°¸ÌáÊ¾', talentEffect: { freeHint: true } },
-    { id: 'qin_keqing', name: 'ÇØ¿ÉÇä', poem: 'ÇéÌìÇéº£»ÃÇéÉí£¬Çé¼ÈÏà·ê±ØÖ÷Òù', talent: 'È«½ÇÉ«³õÊ¼ºÃ¸Ğ¶È¶îÍâ+5µã', talentEffect: { affinityBonus: 5 } },
-    { id: 'qiao_jie', name: 'ÇÉ½ã', poem: 'ÊÆ°ÜĞİÔÆ¹ó£¬¼ÒÍöÄªÂÛÇ×', talent: '·ÖÏí¸´»îºó£¬»ñµÃµÄ½±Àø·­±¶', talentEffect: { shareRewardDouble: true } },
-    { id: 'xiang_ling', name: 'ÏãÁâ', poem: '¸ù²¢ºÉ»¨Ò»¾¥Ïã£¬Æ½ÉúÔâ¼ÊÊµ¿°ÉË', talent: 'Ã¿¹Ø×Ô¶¯½âËø1¾äÔ­Öø¾­µäÊ«´ÊÊÕ²Ø', talentEffect: { autoPoem: true } }
+    { id: 'jia_baoyu', name: 'è´¾å®ç‰', poem: 'æ— æ•…å¯»æ„è§…æ¨ï¼Œæœ‰æ—¶ä¼¼å‚»å¦‚ç‹‚', talent: 'æ¯å…³é¢å¤–è·å¾—1æ¡éšè—çº¿ç´¢ï¼Œç­”é¢˜å®¹é”™æ¬¡æ•°+1', talentEffect: { extraLives: 1, hiddenClue: true } },
+    { id: 'lin_daiyu', name: 'æ—é»›ç‰', poem: 'å ªæ€œå’çµ®æ‰ï¼Œç‰å¸¦æ—ä¸­æŒ‚', talent: 'è¯—è¯ç±»é¢˜ç›®ç§¯åˆ†ç¿»å€ï¼Œç­”é”™ä¸æ‰£é™¤ç§¯åˆ†', talentEffect: { poetryDoubleScore: true, noScorePenalty: true } },
+    { id: 'xue_baochai', name: 'è–›å®é’—', poem: 'å¯å¹åœæœºå¾·ï¼Œé‡‘ç°ªé›ªé‡ŒåŸ‹', talent: 'æ¯å…³é¢å¤–å¢åŠ 1æ¬¡ç­”é¢˜æœºä¼šï¼Œé€šå…³ç¨³å®šæ€§æœ€é«˜', talentEffect: { extraLives: 1 } },
+    { id: 'wang_xifeng', name: 'ç‹ç†™å‡¤', poem: 'å‡¡é¸Ÿåä»æœ«ä¸–æ¥ï¼Œéƒ½çŸ¥çˆ±æ…•æ­¤ç”Ÿæ‰', talent: 'æ¯å…³é€šå…³å¿…é¢å¤–æ‰è½1ä¸ªä¿¡ç‰©ï¼Œæ”¶é›†é€Ÿåº¦æå‡', talentEffect: { extraItem: true } },
+    { id: 'shi_xiangyun', name: 'å²æ¹˜äº‘', poem: 'è¥è¤“ä¸­ï¼Œçˆ¶æ¯å¹åŒäº¡ï¼Œè‹±è±ªé˜”å¤§å®½å®é‡', talent: 'å¸¸è¯†ç±»ã€è¶£å‘³ç±»é¢˜ç›®è‡ªåŠ¨åˆ¤å®šç­”å¯¹', talentEffect: { autoCorrectCommon: true } },
+    { id: 'jia_tanchun', name: 'è´¾æ¢æ˜¥', poem: 'æ‰è‡ªæ¸…æ˜å¿—è‡ªé«˜ï¼Œç”Ÿäºæœ«ä¸–è¿åæ¶ˆ', talent: 'éšè—ç•ªå¤–å‰§æƒ…æå‰è§£é”ï¼Œå¯æŸ¥çœ‹ä¸“å±å†…å®¹', talentEffect: { unlockBonus: true } },
+    { id: 'miao_yu', name: 'å¦™ç‰', poem: 'æ¬²æ´ä½•æ›¾æ´ï¼Œäº‘ç©ºæœªå¿…ç©º', talent: 'ç¨€æœ‰ä¿¡ç‰©æ‰è½æ¦‚ç‡å¤§å¹…æå‡', talentEffect: { rareItemBoost: true } },
+    { id: 'li_wan', name: 'æçº¨', poem: 'æ¡ƒææ˜¥é£ç»“å­å®Œï¼Œåˆ°å¤´è°ä¼¼ä¸€ç›†å…°', talent: 'æ¸¸æˆç§¯åˆ†è·å–é€Ÿåº¦å…¨é¢åŠ å¿«', talentEffect: { scoreBoost: 1.5 } },
+    { id: 'jia_yingchun', name: 'è´¾è¿æ˜¥', poem: 'å­ç³»ä¸­å±±ç‹¼ï¼Œå¾—å¿—ä¾¿çŒ–ç‹‚', talent: 'é—¯å…³å¤±è´¥åï¼Œå¤æ´»ç­‰å¾…æ—¶é—´ç›´æ¥å‡åŠ', talentEffect: { reviveTimeHalf: true } },
+    { id: 'jia_xichun', name: 'è´¾æƒœæ˜¥', poem: 'å¯æ€œç»£æˆ·ä¾¯é—¨å¥³ï¼Œç‹¬å§é’ç¯å¤ä½›æ—', talent: 'æ¯å…³å¯å…è´¹æŸ¥çœ‹1æ¬¡é¢˜ç›®ç­”æ¡ˆæç¤º', talentEffect: { freeHint: true } },
+    { id: 'qin_keqing', name: 'ç§¦å¯å¿', poem: 'æƒ…å¤©æƒ…æµ·å¹»æƒ…èº«ï¼Œæƒ…æ—¢ç›¸é€¢å¿…ä¸»æ·«', talent: 'å…¨è§’è‰²åˆå§‹å¥½æ„Ÿåº¦é¢å¤–+5ç‚¹', talentEffect: { affinityBonus: 5 } },
+    { id: 'qiao_jie', name: 'å·§å§', poem: 'åŠ¿è´¥ä¼‘äº‘è´µï¼Œå®¶äº¡è«è®ºäº²', talent: 'åˆ†äº«å¤æ´»åï¼Œè·å¾—çš„å¥–åŠ±ç¿»å€', talentEffect: { shareRewardDouble: true } },
+    { id: 'xiang_ling', name: 'é¦™è±', poem: 'æ ¹å¹¶è·èŠ±ä¸€èŒé¦™ï¼Œå¹³ç”Ÿé­é™…å®å ªä¼¤', talent: 'æ¯å…³è‡ªåŠ¨è§£é”1å¥åŸè‘—ç»å…¸è¯—è¯æ”¶è—', talentEffect: { autoPoem: true } }
   ],
   scenes: [
     {
-      id: 'qinfang_ting', name: 'Çß·¼Í¤', subtitle: 'ĞÂÊÖÒıµ¼¹Ø',
-      description: 'ÄãĞĞÖÁÇß·¼Õ¢ÇÅ£¬ÂäÓ¢ÆÌÂúÏªË®£¬Ò»ÃûÑ¾÷ßÕı×¼±¸½«ÂúµØÂä»¨É¨ÈëË®ÖĞ¡£',
+      id: 'qinfang_ting', name: 'æ²èŠ³äº­', subtitle: 'æ–°æ‰‹å¼•å¯¼å…³',
+      description: 'ä½ è¡Œè‡³æ²èŠ³é—¸æ¡¥ï¼Œè½è‹±é“ºæ»¡æºªæ°´ï¼Œä¸€åä¸«é¬Ÿæ­£å‡†å¤‡å°†æ»¡åœ°è½èŠ±æ‰«å…¥æ°´ä¸­ã€‚',
       choices: [
-        { text: 'ÉÏÇ°È°×è£¬Ì¾Âä»¨Æ®Áã£¬²»¿ÉËæÒâÔã¼ù', reward: { item: 'hua_ban_jian', affinity: { lin_daiyu: 5 }, score: 100 } },
-        { text: 'Ä¬Ä¬×ªÉí£¬¼ÌĞøÏòÔ°ÄÚÉî´¦Ç°ĞĞ', reward: { item: null, affinity: {}, score: 50 } }
+        { text: 'ä¸Šå‰åŠé˜»ï¼Œå¹è½èŠ±é£˜é›¶ï¼Œä¸å¯éšæ„ç³Ÿè·µ', reward: { item: 'hua_ban_jian', affinity: { lin_daiyu: 5 }, score: 100 } },
+        { text: 'é»˜é»˜è½¬èº«ï¼Œç»§ç»­å‘å›­å†…æ·±å¤„å‰è¡Œ', reward: { item: null, affinity: {}, score: 50 } }
       ],
       questions: [
-        { text: '¡¶ºìÂ¥ÃÎ¡·µÄ×÷ÕßÊÇ£¿', options: ['Ê©ÄÍâÖ', '²ÜÑ©ÇÛ', 'Îâ³Ğ¶÷'], answer: 1, category: 'common' },
-        { text: '¼Ö±¦Óñ³öÉúÊ±£¬¿ÚÖĞËùº¬µÄÆ÷ÎïÊÇ£¿', options: ['½ğËø', 'Í¨Áé±¦Óñ', '°×ÓñÅå'], answer: 1, category: 'common' },
-        { text: '´ó¹ÛÔ°×î³õĞŞ½¨µÄÄ¿µÄÊÇ£¿', options: ['ÔªåúÊ¡Ç×', 'ÉÍ»¨×÷Ê«', '¼Ò×å¼ÒÑç'], answer: 0, category: 'common' }
+        { text: 'ã€Šçº¢æ¥¼æ¢¦ã€‹çš„ä½œè€…æ˜¯ï¼Ÿ', options: ['æ–½è€åºµ', 'æ›¹é›ªèŠ¹', 'å´æ‰¿æ©'], answer: 1, category: 'common' },
+        { text: 'è´¾å®ç‰å‡ºç”Ÿæ—¶ï¼Œå£ä¸­æ‰€å«çš„å™¨ç‰©æ˜¯ï¼Ÿ', options: ['é‡‘é”', 'é€šçµå®ç‰', 'ç™½ç‰ä½©'], answer: 1, category: 'common' },
+        { text: 'å¤§è§‚å›­æœ€åˆä¿®å»ºçš„ç›®çš„æ˜¯ï¼Ÿ', options: ['å…ƒå¦ƒçœäº²', 'èµèŠ±ä½œè¯—', 'å®¶æ—å®¶å®´'], answer: 0, category: 'common' }
       ],
       itemDrop: 'hua_ban_jian'
     },
     {
-      id: 'xiaoxiang_guan', name: 'äìÏæ¹İ', subtitle: 'ÁÖ÷ìÓñÖ÷Ïß³¡¾°',
-      description: '²½ÈëäìÏæ¹İ£¬´äÖñÕÚÓ³£¬ÇåÓÄ¼Å¾²£¬÷ìÓñÕıÒĞ´°¶À×ø£¬Íû×ÅÊ«¸åÉñÉ«Çå³î¡£',
+      id: 'xiaoxiang_guan', name: 'æ½‡æ¹˜é¦†', subtitle: 'æ—é»›ç‰ä¸»çº¿åœºæ™¯',
+      description: 'æ­¥å…¥æ½‡æ¹˜é¦†ï¼Œç¿ ç«¹é®æ˜ ï¼Œæ¸…å¹½å¯‚é™ï¼Œé»›ç‰æ­£å€šçª—ç‹¬åï¼Œæœ›ç€è¯—ç¨¿ç¥è‰²æ¸…æ„ã€‚',
       choices: [
-        { text: 'ÇáÉùÉÏÇ°£¬ÓëËı¹²¶ÁÊ«¸å£¬Ï¸Æ·ÎÄÖĞÒâÈ¤', reward: { item: 'shi_gao_jian', affinity: { lin_daiyu: 15 }, score: 150 } },
-        { text: 'Çá·ÅÒ»Æ¿ĞÂ¿ªÃ·»¨£¬ÇÄÈ»ÍËÈ¥£¬²»ÈÅËıÇå¾²', reward: { item: 'mei_hua_jian', affinity: {}, score: 80 } }
+        { text: 'è½»å£°ä¸Šå‰ï¼Œä¸å¥¹å…±è¯»è¯—ç¨¿ï¼Œç»†å“æ–‡ä¸­æ„è¶£', reward: { item: 'shi_gao_jian', affinity: { lin_daiyu: 15 }, score: 150 } },
+        { text: 'è½»æ”¾ä¸€ç“¶æ–°å¼€æ¢…èŠ±ï¼Œæ‚„ç„¶é€€å»ï¼Œä¸æ‰°å¥¹æ¸…é™', reward: { item: 'mei_hua_jian', affinity: {}, score: 80 } }
       ],
       questions: [
-        { text: 'ÁÖ÷ìÓñÔÚ´ó¹ÛÔ°µÄ¾ÓËùÊÇ£¿', options: ['Ş¿ÎßÔ·', 'äìÏæ¹İ', 'µ¾Ïã´å'], answer: 1, category: 'common' },
-        { text: '"»¨Ğ»»¨·É·ÉÂúÌì£¬ºìÏûÏã¶ÏÓĞË­Á¯"³ö×ÔÄÄÆª×÷Æ·£¿', options: ['¡¶Ôá»¨Ò÷¡·', '¡¶Ü½ÈØÅ®¶ùÚ³¡·', 'º£ÌÄÊ«'], answer: 0, category: 'poetry' },
-        { text: 'ÁÖ÷ìÓñµÄÇ°ÊÀÕæÉíÊÇ£¿', options: ['ç­ÖéÏÉ²İ', '¾¯»ÃÏÉ×Ó', 'Ü½ÈØ»¨Éñ'], answer: 0, category: 'common' }
+        { text: 'æ—é»›ç‰åœ¨å¤§è§‚å›­çš„å±…æ‰€æ˜¯ï¼Ÿ', options: ['è˜…èŠœè‹‘', 'æ½‡æ¹˜é¦†', 'ç¨»é¦™æ‘'], answer: 1, category: 'common' },
+        { text: '"èŠ±è°¢èŠ±é£é£æ»¡å¤©ï¼Œçº¢æ¶ˆé¦™æ–­æœ‰è°æ€œ"å‡ºè‡ªå“ªç¯‡ä½œå“ï¼Ÿ', options: ['ã€Šè‘¬èŠ±åŸã€‹', 'ã€ŠèŠ™è“‰å¥³å„¿è¯”ã€‹', 'æµ·æ£ è¯—'], answer: 0, category: 'poetry' },
+        { text: 'æ—é»›ç‰çš„å‰ä¸–çœŸèº«æ˜¯ï¼Ÿ', options: ['ç»›ç ä»™è‰', 'è­¦å¹»ä»™å­', 'èŠ™è“‰èŠ±ç¥'], answer: 0, category: 'common' }
       ],
       itemDrop: 'shi_gao_jian'
     },
     {
-      id: 'yihong_yuan', name: 'âùºìÔº', subtitle: '¼Ö±¦ÓñÖ÷Ïß³¡¾°',
-      description: 'À´µ½âùºìÔº£¬ÔºÄÚº£ÌÄÊ¢·Å£¬Ñ¾÷ßÃÇĞ¦ÓïÓ¯Ó¯£¬ÎİÄÚ³ÂÉèÑÅÖÂÓÖ²»Ê§¸»¹óÆø¡£',
+      id: 'yihong_yuan', name: 'æ€¡çº¢é™¢', subtitle: 'è´¾å®ç‰ä¸»çº¿åœºæ™¯',
+      description: 'æ¥åˆ°æ€¡çº¢é™¢ï¼Œé™¢å†…æµ·æ£ ç››æ”¾ï¼Œä¸«é¬Ÿä»¬ç¬‘è¯­ç›ˆç›ˆï¼Œå±‹å†…é™ˆè®¾é›…è‡´åˆä¸å¤±å¯Œè´µæ°”ã€‚',
       choices: [
-        { text: 'ÓëÖÚÈËÒ»Í¬ÉÍÍæº£ÌÄ£¬ËµĞ¦ÏĞÌ¸£¬ÈÚÈë´Ë¼ä', reward: { item: 'hai_tang_jian', affinity: { jia_baoyu: 10 }, score: 100 } },
-        { text: '°²¾²·­¿´ÎİÄÚÊé¾í£¬²»´òÈÅÖÚÈË£¬¾²×ø¹ÛÀÀ', reward: { item: 'ping_an_pei', affinity: {}, score: 60 } }
+        { text: 'ä¸ä¼—äººä¸€åŒèµç©æµ·æ£ ï¼Œè¯´ç¬‘é—²è°ˆï¼Œèå…¥æ­¤é—´', reward: { item: 'hai_tang_jian', affinity: { jia_baoyu: 10 }, score: 100 } },
+        { text: 'å®‰é™ç¿»çœ‹å±‹å†…ä¹¦å·ï¼Œä¸æ‰“æ‰°ä¼—äººï¼Œé™åè§‚è§ˆ', reward: { item: 'ping_an_pei', affinity: {}, score: 60 } }
       ],
       questions: [
-        { text: '¼Ö±¦ÓñË½ÏÂ×îÏ²°®ÔÄ¶ÁµÄÊé¼®ÊÇ£¿', options: ['ËÄÊéÎå¾­', '¡¶Î÷Ïá¼Ç¡·', '¡¶×ÊÖÎÍ¨¼ø¡·'], answer: 1, category: 'common' },
-        { text: '"âùºìÔº"Õâ¸öÃû×ÖµÄÌâÃûÕßÊÇ£¿', options: ['¼ÖÕş', '¼ÖÔª´º', '¼Ö±¦Óñ'], answer: 1, category: 'common' },
-        { text: '¼Ö±¦ÓñÉí±ß×îÌùÉíµÄ´óÑ¾÷ßÊÇ£¿', options: ['Ï®ÈË', '×Ï¾é', 'Ñ©Ñã'], answer: 0, category: 'common' }
+        { text: 'è´¾å®ç‰ç§ä¸‹æœ€å–œçˆ±é˜…è¯»çš„ä¹¦ç±æ˜¯ï¼Ÿ', options: ['å››ä¹¦äº”ç»', 'ã€Šè¥¿å¢è®°ã€‹', 'ã€Šèµ„æ²»é€šé‰´ã€‹'], answer: 1, category: 'common' },
+        { text: '"æ€¡çº¢é™¢"è¿™ä¸ªåå­—çš„é¢˜åè€…æ˜¯ï¼Ÿ', options: ['è´¾æ”¿', 'è´¾å…ƒæ˜¥', 'è´¾å®ç‰'], answer: 1, category: 'common' },
+        { text: 'è´¾å®ç‰èº«è¾¹æœ€è´´èº«çš„å¤§ä¸«é¬Ÿæ˜¯ï¼Ÿ', options: ['è¢­äºº', 'ç´«é¹ƒ', 'é›ªé›'], answer: 0, category: 'common' }
       ],
       itemDrop: 'hai_tang_jian'
     },
     {
-      id: 'hengwu_yuan', name: 'Ş¿ÎßÔ·', subtitle: 'Ñ¦±¦îÎÖ÷Ïß³¡¾°',
-      description: '½øÈëŞ¿ÎßÔ·£¬±éÖ²Ææ²İÒì»Ü£¬ÏãÆøÇåÑÅ£¬ÎİÄÚ³ÂÉèËØ¾»¼ò½à£¬È«ÎŞ¸»¹óµñ×ÁÖ®Æø¡£',
+      id: 'hengwu_yuan', name: 'è˜…èŠœè‹‘', subtitle: 'è–›å®é’—ä¸»çº¿åœºæ™¯',
+      description: 'è¿›å…¥è˜…èŠœè‹‘ï¼Œéæ¤å¥‡è‰å¼‚å‰ï¼Œé¦™æ°”æ¸…é›…ï¼Œå±‹å†…é™ˆè®¾ç´ å‡€ç®€æ´ï¼Œå…¨æ— å¯Œè´µé›•ç¢ä¹‹æ°”ã€‚',
       choices: [
-        { text: 'ÕæĞÄ³ÆÔŞÎİÉáÇåÑÅ´ó·½£¬Æø¶È´ÓÈİ³ÁÎÈ', reward: { item: 'xiang_cao_jian', affinity: { xue_baochai: 15 }, score: 120 } },
-        { text: '¾²×øÒ»ÅÔ£¬Òû²è¹ÛÊé£¬²»¶àÑÔÓï´òÈÅ', reward: { item: null, affinity: {}, score: 50 } }
+        { text: 'çœŸå¿ƒç§°èµå±‹èˆæ¸…é›…å¤§æ–¹ï¼Œæ°”åº¦ä»å®¹æ²‰ç¨³', reward: { item: 'xiang_cao_jian', affinity: { xue_baochai: 15 }, score: 120 } },
+        { text: 'é™åä¸€æ—ï¼Œé¥®èŒ¶è§‚ä¹¦ï¼Œä¸å¤šè¨€è¯­æ‰“æ‰°', reward: { item: null, affinity: {}, score: 50 } }
       ],
       questions: [
-        { text: 'Ñ¦±¦îÎËæÉíÅå´÷µÄÆ÷ÎïÊÇ£¿', options: ['Í¨Áé±¦Óñ', '½ğËø', '½ğ÷è÷ë'], answer: 1, category: 'common' },
-        { text: 'Ñ¦±¦îÎµÄÊ«×÷ÕûÌå·ç¸ñ¸üÆ«Ïò£¿', options: ['ÇåÀöÉË¸Ğ', 'ÓºÈİ»ëºñ', 'È÷ÍÑºÀ·Å'], answer: 1, category: 'poetry' },
-        { text: '"ºÃ·çÆ¾½èÁ¦£¬ËÍÎÒÉÏÇàÔÆ"ÊÇË­µÄÊ«¾ä£¿', options: ['ÁÖ÷ìÓñ', 'Ñ¦±¦îÎ', 'Ê·ÏæÔÆ'], answer: 1, category: 'poetry' }
+        { text: 'è–›å®é’—éšèº«ä½©æˆ´çš„å™¨ç‰©æ˜¯ï¼Ÿ', options: ['é€šçµå®ç‰', 'é‡‘é”', 'é‡‘éº’éºŸ'], answer: 1, category: 'common' },
+        { text: 'è–›å®é’—çš„è¯—ä½œæ•´ä½“é£æ ¼æ›´åå‘ï¼Ÿ', options: ['æ¸…ä¸½ä¼¤æ„Ÿ', 'é›å®¹æµ‘åš', 'æ´’è„±è±ªæ”¾'], answer: 1, category: 'poetry' },
+        { text: '"å¥½é£å‡­å€ŸåŠ›ï¼Œé€æˆ‘ä¸Šé’äº‘"æ˜¯è°çš„è¯—å¥ï¼Ÿ', options: ['æ—é»›ç‰', 'è–›å®é’—', 'å²æ¹˜äº‘'], answer: 1, category: 'poetry' }
       ],
       itemDrop: 'xiang_cao_jian'
     },
     {
-      id: 'daoxiang_cun', name: 'µ¾Ïã´å', subtitle: 'ÀîæıÖ÷Ïß³¡¾°',
-      description: 'µ¾Ïã´åÒ»ÅÉÌïÔ°·ç¹â£¬Ã©Éá²ËÆè£¬¼òÆÓ°²Äş£¬ÍğÈçÊÀÍâÌïÔ°£¬ÎŞ°ë·ÖË×ÊÀĞúÏù¡£',
+      id: 'daoxiang_cun', name: 'ç¨»é¦™æ‘', subtitle: 'æçº¨ä¸»çº¿åœºæ™¯',
+      description: 'ç¨»é¦™æ‘ä¸€æ´¾ç”°å›­é£å…‰ï¼ŒèŒ…èˆèœç•¦ï¼Œç®€æœ´å®‰å®ï¼Œå®›å¦‚ä¸–å¤–ç”°å›­ï¼Œæ— åŠåˆ†ä¿—ä¸–å–§åš£ã€‚',
       choices: [
-        { text: 'ÕæĞÄÔŞÌ¾´Ë´¦Çå¾²×ÔÔÚ£¬×îÊÇÑøĞÄÄşÉñ', reward: { item: 'dao_sui_jian', affinity: { li_wan: 10 }, score: 100 } },
-        { text: 'Ö÷¶¯°ïÃ¦ÕûÀí²ËÆÔ£¬ÌåÑéÌïÔ°ÏĞÈ¤', reward: { item: null, affinity: {}, score: 80 } }
+        { text: 'çœŸå¿ƒèµå¹æ­¤å¤„æ¸…é™è‡ªåœ¨ï¼Œæœ€æ˜¯å…»å¿ƒå®ç¥', reward: { item: 'dao_sui_jian', affinity: { li_wan: 10 }, score: 100 } },
+        { text: 'ä¸»åŠ¨å¸®å¿™æ•´ç†èœåœƒï¼Œä½“éªŒç”°å›­é—²è¶£', reward: { item: null, affinity: {}, score: 80 } }
       ],
       questions: [
-        { text: 'µ¾Ïã´åµÄÖ÷ÈËÊÇ£¿', options: ['Àîæı', '¼ÖÌ½´º', '¼ÖÏ§´º'], answer: 0, category: 'common' },
-        { text: 'ÀîæıµÄ¶ù×ÓÊÇ£¿', options: ['¼ÖÀ¼', '¼ÖÈØ', '¼Ö»·'], answer: 0, category: 'common' },
-        { text: '´ó¹ÛÔ°ÖĞ×îÆÓËØ¡¢×î°²¾²µÄÔºÂäÊÇ£¿', options: ['äìÏæ¹İ', 'µ¾Ïã´å', 'èĞ´äâÖ'], answer: 1, category: 'common' }
+        { text: 'ç¨»é¦™æ‘çš„ä¸»äººæ˜¯ï¼Ÿ', options: ['æçº¨', 'è´¾æ¢æ˜¥', 'è´¾æƒœæ˜¥'], answer: 0, category: 'common' },
+        { text: 'æçº¨çš„å„¿å­æ˜¯ï¼Ÿ', options: ['è´¾å…°', 'è´¾è“‰', 'è´¾ç¯'], answer: 0, category: 'common' },
+        { text: 'å¤§è§‚å›­ä¸­æœ€æœ´ç´ ã€æœ€å®‰é™çš„é™¢è½æ˜¯ï¼Ÿ', options: ['æ½‡æ¹˜é¦†', 'ç¨»é¦™æ‘', 'æ Šç¿ åºµ'], answer: 1, category: 'common' }
       ],
       itemDrop: 'dao_sui_jian'
     },
     {
-      id: 'qiushuang_zhai', name: 'ÇïË¬Õ«', subtitle: '¼ÖÌ½´ºÖ÷Ïß³¡¾°',
-      description: 'ÇïË¬Õ«ÌüÌÃ¿ªÀ«Ë¬ÀÊ£¬±ÊÄ«Ö½ÑâÒ»Ó¦¾ãÈ«£¬´¦´¦Í¸×Å²ÅÆøÓëÓ¢Æø£¬È«ÎŞĞ¡¶ùÅ®×ËÌ¬¡£',
+      id: 'qiushuang_zhai', name: 'ç§‹çˆ½æ–‹', subtitle: 'è´¾æ¢æ˜¥ä¸»çº¿åœºæ™¯',
+      description: 'ç§‹çˆ½æ–‹å…å ‚å¼€é˜”çˆ½æœ—ï¼Œç¬”å¢¨çº¸ç šä¸€åº”ä¿±å…¨ï¼Œå¤„å¤„é€ç€æ‰æ°”ä¸è‹±æ°”ï¼Œå…¨æ— å°å„¿å¥³å§¿æ€ã€‚',
       choices: [
-        { text: 'ÓëÌ½´ºÌ¸ÂÛÊ«Êé¼ÒÊÂ£¬¾´ÅåËıµÄ²Å¸ÉÓë¸ñ¾Ö', reward: { item: 'bi_mo_jian', affinity: { jia_tanchun: 15 }, score: 120 } },
-        { text: '¾²¾²ĞÀÉÍÎİÄÚÊé»­²ØÆ·£¬²»ÓïÅÔ¹Û', reward: { item: null, affinity: {}, score: 50 } }
+        { text: 'ä¸æ¢æ˜¥è°ˆè®ºè¯—ä¹¦å®¶äº‹ï¼Œæ•¬ä½©å¥¹çš„æ‰å¹²ä¸æ ¼å±€', reward: { item: 'bi_mo_jian', affinity: { jia_tanchun: 15 }, score: 120 } },
+        { text: 'é™é™æ¬£èµå±‹å†…ä¹¦ç”»è—å“ï¼Œä¸è¯­æ—è§‚', reward: { item: null, affinity: {}, score: 50 } }
       ],
       questions: [
-        { text: '"²Å×ÔÇåÃ÷Ö¾×Ô¸ß"ĞÎÈİµÄÊÇÄÄÎ»Å®×Ó£¿', options: ['ÍõÎõ·ï', '¼ÖÌ½´º', 'Ê·ÏæÔÆ'], answer: 1, category: 'common' },
-        { text: '´ó¹ÛÔ°ÖĞµÚÒ»¸ö·¢ÆğÊ«ÉçµÄÈËÊÇ£¿', options: ['ÁÖ÷ìÓñ', 'Ñ¦±¦îÎ', '¼ÖÌ½´º'], answer: 2, category: 'common' },
-        { text: '¼ÖÌ½´ºÔÚ¼Ö¸®ÖĞµÄÉí·İÊÇ£¿', options: ['µÕÅ®', 'ÊüÅ®', '¼ÄÑøÖ®Å®'], answer: 1, category: 'common' }
+        { text: '"æ‰è‡ªæ¸…æ˜å¿—è‡ªé«˜"å½¢å®¹çš„æ˜¯å“ªä½å¥³å­ï¼Ÿ', options: ['ç‹ç†™å‡¤', 'è´¾æ¢æ˜¥', 'å²æ¹˜äº‘'], answer: 1, category: 'common' },
+        { text: 'å¤§è§‚å›­ä¸­ç¬¬ä¸€ä¸ªå‘èµ·è¯—ç¤¾çš„äººæ˜¯ï¼Ÿ', options: ['æ—é»›ç‰', 'è–›å®é’—', 'è´¾æ¢æ˜¥'], answer: 2, category: 'common' },
+        { text: 'è´¾æ¢æ˜¥åœ¨è´¾åºœä¸­çš„èº«ä»½æ˜¯ï¼Ÿ', options: ['å«¡å¥³', 'åº¶å¥³', 'å¯„å…»ä¹‹å¥³'], answer: 1, category: 'common' }
       ],
       itemDrop: 'bi_mo_jian'
     },
     {
-      id: 'longcui_an', name: 'èĞ´äâÖ', subtitle: 'ÃîÓñÖ÷Ïß³¡¾°',
-      description: 'èĞ´äâÖÇå¾²ÎŞ³¾£¬ÔºÖĞºìÃ·Ê¢·Å£¬ìø·¿ÓÄ¾²£¬²»È¾°ëµãË×ÊÀ³¾°£¡£',
+      id: 'longcui_an', name: 'æ Šç¿ åºµ', subtitle: 'å¦™ç‰ä¸»çº¿åœºæ™¯',
+      description: 'æ Šç¿ åºµæ¸…é™æ— å°˜ï¼Œé™¢ä¸­çº¢æ¢…ç››æ”¾ï¼Œç¦…æˆ¿å¹½é™ï¼Œä¸æŸ“åŠç‚¹ä¿—ä¸–å°˜åŸƒã€‚',
       choices: [
-        { text: 'ÇáÉùĞĞÀñ£¬ã¡ÊØ¹æ¾Ø£¬²»Ğú»©¡¢²»ËæÒâ´¥ÅöÆ÷Îï', reward: { item: 'hong_mei_jian', affinity: { miao_yu: 15 }, score: 150 } },
-        { text: '¹ÛÉÍÔºÖĞºìÃ·£¬ËæÊÖÕÛÏÂÒ»Ö¦´ø×ß', reward: { item: 'ping_an_pei', affinity: {}, score: 30 } }
+        { text: 'è½»å£°è¡Œç¤¼ï¼Œæªå®ˆè§„çŸ©ï¼Œä¸å–§å“—ã€ä¸éšæ„è§¦ç¢°å™¨ç‰©', reward: { item: 'hong_mei_jian', affinity: { miao_yu: 15 }, score: 150 } },
+        { text: 'è§‚èµé™¢ä¸­çº¢æ¢…ï¼Œéšæ‰‹æŠ˜ä¸‹ä¸€æå¸¦èµ°', reward: { item: 'ping_an_pei', affinity: {}, score: 30 } }
       ],
       questions: [
-        { text: 'èĞ´äâÖµÄÖ÷ÈËÊÇ£¿', options: ['ÖÇÄÜ', 'ÃîÓñ', '¼ÖÏ§´º'], answer: 1, category: 'common' },
-        { text: 'ÃîÓñ×î³öÖÚ¡¢×î½²¾¿µÄ¼¼ÒÕÊÇ£¿', options: ['Æ·²èÖóË®', '×÷Ê«»æ»­', '¹Ü¼ÒÀíÊÂ'], answer: 0, category: 'common' },
-        { text: '´ó¹ÛÔ°ÖĞ×î½àñ±¡¢×î²»ÈİÊÀË×Õ´È¾µÄÈËÎïÊÇ£¿', options: ['ÁÖ÷ìÓñ', 'Ñ¦±¦îÎ', 'ÃîÓñ'], answer: 2, category: 'common' }
+        { text: 'æ Šç¿ åºµçš„ä¸»äººæ˜¯ï¼Ÿ', options: ['æ™ºèƒ½', 'å¦™ç‰', 'è´¾æƒœæ˜¥'], answer: 1, category: 'common' },
+        { text: 'å¦™ç‰æœ€å‡ºä¼—ã€æœ€è®²ç©¶çš„æŠ€è‰ºæ˜¯ï¼Ÿ', options: ['å“èŒ¶ç…®æ°´', 'ä½œè¯—ç»˜ç”»', 'ç®¡å®¶ç†äº‹'], answer: 0, category: 'common' },
+        { text: 'å¤§è§‚å›­ä¸­æœ€æ´ç™–ã€æœ€ä¸å®¹ä¸–ä¿—æ²¾æŸ“çš„äººç‰©æ˜¯ï¼Ÿ', options: ['æ—é»›ç‰', 'è–›å®é’—', 'å¦™ç‰'], answer: 2, category: 'common' }
       ],
       itemDrop: 'hong_mei_jian'
     },
     {
-      id: 'daguan_lou', name: '´ó¹ÛÂ¥', subtitle: 'ÖÕ¼«½á¾Ö¹Ø',
-      description: 'ĞĞÖÁ´ó¹ÛÂ¥£¬Â¥ÉÏÇåÑÅÉèÑç£¬Ô°ÖĞÖÚÈËÆë¾Û£¬Ê«¾Æ·çÁ÷£¬ÂúÔ°·±»ª¾¡ÊÕÑÛµ×£¬Ò»ÃÎ½«ÖÁÖÕÕÂ¡£',
+      id: 'daguan_lou', name: 'å¤§è§‚æ¥¼', subtitle: 'ç»ˆæç»“å±€å…³',
+      description: 'è¡Œè‡³å¤§è§‚æ¥¼ï¼Œæ¥¼ä¸Šæ¸…é›…è®¾å®´ï¼Œå›­ä¸­ä¼—äººé½èšï¼Œè¯—é…’é£æµï¼Œæ»¡å›­ç¹åå°½æ”¶çœ¼åº•ï¼Œä¸€æ¢¦å°†è‡³ç»ˆç« ã€‚',
       choices: [
-        { text: 'ÈëÏ¯Í¬»¶£¬¹²ÉÍ·çÔÂ£¬¼ÇÈ¡´Ë¿Ì·±»ª¹â¾°', reward: { item: 'hong_lou_meng_ling', affinity: {}, score: 200, ending: 'prosperous' } },
-        { text: 'Æ¾À¸Ô¶Íû£¬¾²¹ÛÂúÔ°¾°É«£¬¾²Ë¼ºìÂ¥Ò»ÃÎ', reward: { item: 'hong_lou_meng_ling', affinity: {}, score: 200, ending: 'elegant' } }
+        { text: 'å…¥å¸­åŒæ¬¢ï¼Œå…±èµé£æœˆï¼Œè®°å–æ­¤åˆ»ç¹åå…‰æ™¯', reward: { item: 'hong_lou_meng_ling', affinity: {}, score: 200, ending: 'prosperous' } },
+        { text: 'å‡­æ è¿œæœ›ï¼Œé™è§‚æ»¡å›­æ™¯è‰²ï¼Œé™æ€çº¢æ¥¼ä¸€æ¢¦', reward: { item: 'hong_lou_meng_ling', affinity: {}, score: 200, ending: 'elegant' } }
       ],
       questions: [
-        { text: '½ğÁêÊ®¶şîÎ¹²¼Æ¶àÉÙÈË£¿', options: ['10', '12', '14'], answer: 1, category: 'common' },
-        { text: 'ÏÂÁĞÄÄ¸ö²»ÊôÓÚ¡¶ºìÂ¥ÃÎ¡·µÄ±ğÃû£¿', options: ['¡¶Ê¯Í·¼Ç¡·', '¡¶·çÔÂ±¦¼ø¡·', '¡¶½ğÆ¿Ã·¡·'], answer: 2, category: 'common' },
-        { text: '´ó¹ÛÔ°Ô­ÖøÖĞµÄ×îÖÕ½á¾ÖÊÇ£¿', options: ['ÓÀÔ¶·±»ª', '°ÜÂä»Ä·Ï', '×ªÂôËûÈË'], answer: 1, category: 'common' }
+        { text: 'é‡‘é™µåäºŒé’—å…±è®¡å¤šå°‘äººï¼Ÿ', options: ['10', '12', '14'], answer: 1, category: 'common' },
+        { text: 'ä¸‹åˆ—å“ªä¸ªä¸å±äºã€Šçº¢æ¥¼æ¢¦ã€‹çš„åˆ«åï¼Ÿ', options: ['ã€ŠçŸ³å¤´è®°ã€‹', 'ã€Šé£æœˆå®é‰´ã€‹', 'ã€Šé‡‘ç“¶æ¢…ã€‹'], answer: 2, category: 'common' },
+        { text: 'å¤§è§‚å›­åŸè‘—ä¸­çš„æœ€ç»ˆç»“å±€æ˜¯ï¼Ÿ', options: ['æ°¸è¿œç¹å', 'è´¥è½è’åºŸ', 'è½¬å–ä»–äºº'], answer: 1, category: 'common' }
       ],
       itemDrop: 'hong_lou_meng_ling'
     }
   ],
   items: {
-    hua_ban_jian: { name: '»¨°ê¼ã', rarity: 'normal' }, shi_gao_jian: { name: 'Ê«¸å¼ã', rarity: 'rare' },
-    mei_hua_jian: { name: 'Ã·»¨¼ã', rarity: 'normal' }, hai_tang_jian: { name: 'º£ÌÄ¼ã', rarity: 'normal' },
-    xiang_cao_jian: { name: 'Ïã²İ¼ã', rarity: 'normal' }, dao_sui_jian: { name: 'µ¾Ëë¼ã', rarity: 'normal' },
-    bi_mo_jian: { name: '±ÊÄ«¼ã', rarity: 'normal' }, hong_mei_jian: { name: 'ºìÃ·¼ã', rarity: 'rare' },
-    jin_suo_pei: { name: '½ğËøÅå', rarity: 'rare' }, tong_ling_yu: { name: 'Í¨ÁéÓñ', rarity: 'legendary' },
-    jin_qi_lin: { name: '½ğ÷è÷ë', rarity: 'rare' }, tuan_shan: { name: 'ÍÅÉÈ', rarity: 'normal' },
-    nian_zhu: { name: 'ÄîÖé', rarity: 'rare' }, shu_xiang_pei: { name: 'ÊéÏãÅå', rarity: 'normal' },
-    ping_an_pei: { name: 'Æ½°²Åå', rarity: 'normal' }, hong_lou_meng_ling: { name: 'ºìÂ¥ÃÎÁî', rarity: 'legendary' }
+    hua_ban_jian: { name: 'èŠ±ç“£ç¬º', rarity: 'normal' }, shi_gao_jian: { name: 'è¯—ç¨¿ç¬º', rarity: 'rare' },
+    mei_hua_jian: { name: 'æ¢…èŠ±ç¬º', rarity: 'normal' }, hai_tang_jian: { name: 'æµ·æ£ ç¬º', rarity: 'normal' },
+    xiang_cao_jian: { name: 'é¦™è‰ç¬º', rarity: 'normal' }, dao_sui_jian: { name: 'ç¨»ç©—ç¬º', rarity: 'normal' },
+    bi_mo_jian: { name: 'ç¬”å¢¨ç¬º', rarity: 'normal' }, hong_mei_jian: { name: 'çº¢æ¢…ç¬º', rarity: 'rare' },
+    jin_suo_pei: { name: 'é‡‘é”ä½©', rarity: 'rare' }, tong_ling_yu: { name: 'é€šçµç‰', rarity: 'legendary' },
+    jin_qi_lin: { name: 'é‡‘éº’éºŸ', rarity: 'rare' }, tuan_shan: { name: 'å›¢æ‰‡', rarity: 'normal' },
+    nian_zhu: { name: 'å¿µç ', rarity: 'rare' }, shu_xiang_pei: { name: 'ä¹¦é¦™ä½©', rarity: 'normal' },
+    ping_an_pei: { name: 'å¹³å®‰ä½©', rarity: 'normal' }, hong_lou_meng_ling: { name: 'çº¢æ¥¼æ¢¦ä»¤', rarity: 'legendary' }
   },
   endings: {
-    prosperous: { title: '·±»ªÒ»ÃÎ', text: '´ó¹ÛÔ°·çÔÂ·±»ª£¬Ê¢Ë¥ÆğÂä£¬ÖÕ³ÉÇ§¹ÅÒ»ÃÎ¡£ÊéÖĞ±¯»¶ÀëºÏ¡¢ÈËÇéÀäÅ¯£¬½ÔÁôÓÚÄãÎÒĞÄÍ·¡£' },
-    elegant: { title: 'ÇåÑÅÑ°·¼', text: '²»ÁµË×ÊÀ·±»ª£¬²»Ì¾ÊÀÊÂÀëºÏ£¬Ö»È¡Ô°ÖĞÒ»²İÒ»Ä¾¡¢Ò»Ê«Ò»ÔÏ£¬×Ô³É·çÑÅ£¬²»¸º´ËĞĞ¡£' },
-    ultimate: { title: 'ºìÂ¥ÑÅ¿Í', text: '±éÓÎ´ó¹ÛÔ°£¬¾¡Ê¶ºìÂ¥ÈË¡£ÀÀ¾¡Ô°ÖĞ·çÔÂ£¬¶Á±éÊéÖĞ±¯»¶£¬²»¸ºÇ§¹Å¾­µä£¬²»¸º´Ë·¬Ñ°ÃÎÖ®ĞĞ¡£' }
+    prosperous: { title: 'ç¹åä¸€æ¢¦', text: 'å¤§è§‚å›­é£æœˆç¹åï¼Œç››è¡°èµ·è½ï¼Œç»ˆæˆåƒå¤ä¸€æ¢¦ã€‚ä¹¦ä¸­æ‚²æ¬¢ç¦»åˆã€äººæƒ…å†·æš–ï¼Œçš†ç•™äºä½ æˆ‘å¿ƒå¤´ã€‚' },
+    elegant: { title: 'æ¸…é›…å¯»èŠ³', text: 'ä¸æ‹ä¿—ä¸–ç¹åï¼Œä¸å¹ä¸–äº‹ç¦»åˆï¼Œåªå–å›­ä¸­ä¸€è‰ä¸€æœ¨ã€ä¸€è¯—ä¸€éŸµï¼Œè‡ªæˆé£é›…ï¼Œä¸è´Ÿæ­¤è¡Œã€‚' },
+    ultimate: { title: 'çº¢æ¥¼é›…å®¢', text: 'éæ¸¸å¤§è§‚å›­ï¼Œå°½è¯†çº¢æ¥¼äººã€‚è§ˆå°½å›­ä¸­é£æœˆï¼Œè¯»éä¹¦ä¸­æ‚²æ¬¢ï¼Œä¸è´Ÿåƒå¤ç»å…¸ï¼Œä¸è´Ÿæ­¤ç•ªå¯»æ¢¦ä¹‹è¡Œã€‚' }
   },
-  posterTexts: ['Ò»Ô°·çÔÂ£¬Ò»ÃÎºìÂ¥£¬ÎÒ×ÔÑ°·¼¶øÀ´', '´ó¹ÛÔ°ÄÚ½Ô¹ı¿Í£¬Ç§¹Å·çÁ÷Ò»Êé¼ä', '»¨Âä»¨¿ªÖÕÊÇÃÎ£¬ÈË¼äĞÒµÃ¶ÁºìÂ¥']
+  posterTexts: ['ä¸€å›­é£æœˆï¼Œä¸€æ¢¦çº¢æ¥¼ï¼Œæˆ‘è‡ªå¯»èŠ³è€Œæ¥', 'å¤§è§‚å›­å†…çš†è¿‡å®¢ï¼Œåƒå¤é£æµä¸€ä¹¦é—´', 'èŠ±è½èŠ±å¼€ç»ˆæ˜¯æ¢¦ï¼Œäººé—´å¹¸å¾—è¯»çº¢æ¥¼']
 };
 if (typeof module !== 'undefined' && module.exports) { module.exports = { GAME_DATA }; }
