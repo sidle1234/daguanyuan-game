@@ -208,10 +208,12 @@ class GameUI {
     const wt = this.engine.state.character.talentEffect.reviveTimeHalf ? 15 : 30;
     qa.innerHTML = '<div class="scene-fail"><h3>\u7b54\u9898\u673a\u4f1a\u5df2\u7528\u5c3d</h3><p>\u9009\u62e9\u590d\u6d3b\u65b9\u5f0f\uff1a</p><button class="revive-btn" id="btn-revive-share">\u5206\u4eab\u81f3\u5fae\u4fe1\uff0c\u7acb\u5373\u590d\u6d3b</button><button class="revive-btn" id="btn-revive-wait">\u7b49\u5f85\u6062\u590d\uff08' + wt + '\u5206\u949f\uff09</button></div>';
     document.getElementById('btn-revive-share').addEventListener('click', () => {
-      this.engine.revive('share');
-      this.livesRemaining = this.engine.getLives();
-      this.answerLocked = false;
-      this.renderQuestion();
+      this.triggerShare(() => {
+        this.engine.revive('share');
+        this.livesRemaining = this.engine.getLives();
+        this.answerLocked = false;
+        this.renderQuestion();
+      });
     });
     document.getElementById('btn-revive-wait').addEventListener('click', () => {
       qa.innerHTML = '<div class="wait-message"><p>\u8bf7' + wt + '\u5206\u949f\u540e\u518d\u6765\u6311\u6218</p></div>';
@@ -260,6 +262,45 @@ class GameUI {
   }
 
   onRestart() { this.storage.clear(); this.engine.newGame(); this.showScreen('cover'); }
+
+  triggerShare(onSuccess) {
+    const shareData = {
+      title: '\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0',
+      text: '\u6211\u5728\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0\u4e2d\u9047\u5230\u4e86\u96be\u9898\uff0c\u5feb\u6765\u5e2e\u6211\u52a9\u529b\u590d\u6d3b\uff01',
+      url: window.location.href
+    };
+    if (navigator.share) {
+      navigator.share(shareData).then(() => {
+        onSuccess();
+      }).catch(() => {
+        this.showShareFallback(onSuccess);
+      });
+    } else {
+      this.showShareFallback(onSuccess);
+    }
+  }
+
+  showShareFallback(onSuccess) {
+    const qa = document.getElementById('quiz-area');
+    qa.innerHTML = '<div class="share-panel"><h3>\u5206\u4eab\u590d\u6d3b</h3><p>\u8bf7\u5c06\u6e38\u620f\u5206\u4eab\u7ed9\u4e00\u4f4d\u597d\u53cb</p><p class="share-url-box">' + window.location.href + '</p><button class="revive-btn" id="btn-copy-link">\u590d\u5236\u94fe\u63a5</button><p class="share-tip">\u590d\u5236\u540e\u53d1\u9001\u7ed9\u597d\u53cb\uff0c\u5373\u53ef\u590d\u6d3b</p></div>';
+    document.getElementById('btn-copy-link').addEventListener('click', () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          document.getElementById('btn-copy-link').textContent = '\u2705 \u5df2\u590d\u5236\uff0c\u8bf7\u53d1\u9001\u7ed9\u597d\u53cb';
+          setTimeout(() => onSuccess(), 1500);
+        });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = window.location.href;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        document.getElementById('btn-copy-link').textContent = '\u2705 \u5df2\u590d\u5236\uff0c\u8bf7\u53d1\u9001\u7ed9\u597d\u53cb';
+        setTimeout(() => onSuccess(), 1500);
+      }
+    });
+  }
 
   getCharacterEmoji(id) {
     const e = {jia_baoyu:'&#128142;',lin_daiyu:'&#127807;',xue_baochai:'&#128274;',wang_xifeng:'&#129413;',shi_xiangyun:'&#9729;',jia_tanchun:'&#127801;',miao_yu:'&#127802;',li_wan:'&#127806;',jia_yingchun:'&#127800;',jia_xichun:'&#128367;',qin_keqing:'&#127769;',qiao_jie:'&#127872;',xiang_ling:'&#127802;'};

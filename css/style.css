@@ -86,3 +86,9 @@ body{font-family:"STKaiti","KaiTi","Noto Serif SC",serif;background:var(--bg);co
   margin-bottom: 16px; box-shadow: var(--shadow);
   background-size: cover; background-position: center;
 }
+
+/* Share panel */
+.share-panel { text-align: center; padding: 30px 20px; }
+.share-panel h3 { color: var(--primary); margin-bottom: 15px; }
+.share-url-box { background: #f5f0e8; border: 1px solid #ddd; border-radius: 8px; padding: 10px; font-size: 0.85em; word-break: break-all; margin: 15px 0; color: #666; }
+.share-tip { color: var(--text-light); font-size: 0.85em; margin-top: 10px; }
