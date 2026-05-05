@@ -191,10 +191,13 @@ console.log('\n=== SECTION 2: Talent Effect Verification ===');
   const e = new GameEngine(GAME_DATA);
   e.newGame(); e.assignCharacter('shi_xiangyun');
   e.makeChoice(0);
+  const scoreBefore = e.state.score;
   // Answer wrong on common question
   const result = e.answerQuestion(0, 2); // wrong answer for common question
   assert(result.correct, 'Xiangyun auto-corrects common questions');
   assert(result.autoCorrect, 'autoCorrect flag set');
+  assertEqual(result.score, 50, 'Xiangyun autoCorrect returns score 50');
+  assertEqual(e.state.score, scoreBefore + 50, 'Xiangyun autoCorrect actually adds score to state');
 })();
 
 // 2.6 Jia Tanchun - unlockBonus

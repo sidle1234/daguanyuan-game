@@ -68,7 +68,9 @@ class GameEngine {
     const question = scene.questions[questionIndex];
     const isCorrect = question.answer === answerIndex;
     if (!isCorrect && this.state.character.talentEffect.autoCorrectCommon && question.category === 'common') {
-      return { correct: true, autoCorrect: true, score: this.calculateQuestionScore(question) };
+      const score = this.calculateQuestionScore(question);
+      this.state.score += score;
+      return { correct: true, autoCorrect: true, score };
     }
     if (isCorrect) {
       const score = this.calculateQuestionScore(question);
