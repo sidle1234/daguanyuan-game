@@ -264,59 +264,28 @@ class GameUI {
   onRestart() { this.storage.clear(); this.engine.newGame(); this.showScreen('cover'); }
 
   triggerShare(onSuccess) {
-    const shareData = {
+    if (!navigator.share) {
+      // Browser doesn't support share API - show message
+      const qa = document.getElementById('quiz-area');
+      qa.innerHTML = '<div class="share-panel">' +
+        '<h3>\u5206\u4eab\u590d\u6d3b</h3>' +
+        '<p>\u5f53\u524d\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u5206\u4eab\u529f\u80fd</p>' +
+        '<p>\u8bf7\u7528\u624b\u673a\u6d4f\u89c8\u5668\uff08Safari/Chrome\uff09\u6253\u5f00\u672c\u9875\u9762</p>' +
+        '<p class="share-url-box">' + window.location.href + '</p>' +
+        '<button class="revive-btn" id="btn-share-retry">\u91cd\u8bd5\u5206\u4eab</button></div>';
+      document.getElementById('btn-share-retry').addEventListener('click', () => {
+        this.triggerShare(onSuccess);
+      });
+      return;
+    }
+    navigator.share({
       title: '\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0 - \u5feb\u6765\u5e2e\u6211\u590d\u6d3b\uff01',
       text: '\u6211\u5728\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0\u4e2d\u9047\u5230\u4e86\u96be\u9898\uff0c\u5feb\u6765\u626b\u7801\u5e2e\u6211\u52a9\u529b\u590d\u6d3b\uff01',
       url: window.location.href
-    };
-    if (navigator.share) {
-      navigator.share(shareData).then(() => {
-        onSuccess();
-      }).catch((err) => {
-        if (err.name !== 'AbortError') {
-          this.showShareCard(onSuccess);
-        }
-        // AbortError = user cancelled, do nothing (stay on share screen)
-      });
-    } else {
-      this.showShareCard(onSuccess);
-    }
-  }
-
-  showShareCard(onSuccess) {
-    const qa = document.getElementById('quiz-area');
-    const charName = this.engine.state.character.name;
-    qa.innerHTML = '<div class="share-panel">' +
-      '<h3>\u5206\u4eab\u590d\u6d3b</h3>' +
-      '<div class="share-card" id="share-card">' +
-        '<div class="share-card-inner">' +
-          '<p class="share-card-title">\u5927\u89c2\u56ed\u5bfb\u68a6\u8bb0</p>' +
-          '<p class="share-card-text">\u6211\u626e\u6f14' + charName + '\uff0c\u95ef\u5173\u9047\u5230\u96be\u9898\uff0c\u5feb\u6765\u5e2e\u6211\u52a9\u529b\uff01</p>' +
-          '<p class="share-card-url">' + window.location.href + '</p>' +
-        '</div>' +
-      '</div>' +
-      '<p class="share-steps">\u2460 \u622a\u56fe\u4fdd\u5b58\u4e0a\u65b9\u5361\u7247<br>\u2461 \u6253\u5f00\u5fae\u4fe1\uff0c\u53d1\u9001\u7ed9\u4e00\u4f4d\u597d\u53cb<br>\u2462 \u8fd4\u56de\u6b64\u9875\u9762\u5373\u53ef\u590d\u6d3b</p>' +
-      '<button class="revive-btn" id="btn-share-done">\u2705 \u6211\u5df2\u5206\u4eab\uff0c\u8fd4\u56de\u590d\u6d3b</button>' +
-      '<p class="share-tip">\u5206\u4eab\u540e\u70b9\u51fb\u4e0a\u65b9\u6309\u94ae\u590d\u6d3b</p></div>';
-    // User must tap "I have shared" AND have left the page
-    let hasLeft = false;
-    const visHandler = () => {
-      if (document.visibilityState === 'hidden') hasLeft = true;
-    };
-    document.addEventListener('visibilitychange', visHandler);
-    document.getElementById('btn-share-done').addEventListener('click', () => {
-      document.removeEventListener('visibilitychange', visHandler);
-      if (hasLeft) {
-        onSuccess();
-      } else {
-        // User didn't leave - remind them
-        document.getElementById('btn-share-done').textContent = '\u8bf7\u5148\u5206\u4eab\u7ed9\u597d\u53cb\u518d\u8fd4\u56de';
-        document.getElementById('btn-share-done').style.borderColor = '#e74c3c';
-        setTimeout(() => {
-          document.getElementById('btn-share-done').textContent = '\u2705 \u6211\u5df2\u5206\u4eab\uff0c\u8fd4\u56de\u590d\u6d3b';
-          document.getElementById('btn-share-done').style.borderColor = '';
-        }, 2000);
-      }
+    }).then(() => {
+      onSuccess();
+    }).catch(() => {
+      // User cancelled share - do nothing, stay on fail screen
     });
   }
 
