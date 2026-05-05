@@ -1,0 +1,1 @@
+{"name":"daguanyuan-game","version":"1.0.0","description":"Daguanyuan H5 Game","scripts":{"test":"node tests/run-tests.js"},"license":"MIT"}

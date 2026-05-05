@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>大观园寻梦记 - 红楼梦沉浸式互动游戏</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="screen-cover" class="screen active">
+    <div class="cover-poem">忽闻沁芳溪水声<br>误入大观园</div>
+    <h1 class="cover-title">大观园寻梦记</h1>
+    <p class="cover-subtitle">红楼梦沉浸式微信互动游戏</p>
+    <button id="btn-start" class="btn-primary">入园寻梦</button>
+  </div>
+  <div id="screen-auth" class="screen">
+    <h2 style="color:var(--primary);margin-bottom:20px;">欢迎入园</h2>
+    <p class="auth-text">游客模式可正常完整游玩，关闭页面后进度将自动保存至本地。</p>
+    <button id="btn-guest" class="btn-primary">开始游戏</button>
+  </div>
+  <div id="screen-identity" class="screen">
+    <h2 style="color:var(--primary);margin-bottom:10px;">缘入红楼</h2>
+    <p style="color:var(--text-light);margin-bottom:20px;">为你注定一重身份</p>
+    <div id="identity-result"></div>
+    <button id="btn-enter-garden" class="btn-primary" style="margin-top:30px;">踏入大观园</button>
+  </div>
+  <div id="screen-map" class="screen">
+    <h2 class="map-title">大观园</h2>
+    <div id="map-scenes"></div>
+    <div id="sidebar-stats"></div>
+  </div>
+  <div id="screen-scene" class="screen">
+    <div id="scene-content"></div>
+  </div>
+  <div id="screen-ending" class="screen">
+    <div id="ending-content"></div>
+    <canvas id="poster-canvas"></canvas>
+    <button id="btn-share" class="btn-primary" style="margin-top:20px;">生成分享海报</button>
+    <button id="btn-restart" class="btn-secondary">重新开始</button>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const engine = new GameEngine(GAME_DATA);
+      const storage = new GameStorage();
+      const ui = new GameUI(engine, storage);
+      ui.init();
+    });
+  </script>
+</body>
+</html>
