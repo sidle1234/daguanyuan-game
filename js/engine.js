@@ -1,4 +1,4 @@
-﻿class GameEngine {
+class GameEngine {
   constructor(data) { this.data = data; this.state = null; }
 
   newGame() {

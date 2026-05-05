@@ -1,4 +1,4 @@
-﻿const { GAME_DATA } = require('../js/data.js');
+const { GAME_DATA } = require('../js/data.js');
 const { GameEngine } = require('../js/engine.js');
 const { GameStorage } = require('../js/storage.js');
 

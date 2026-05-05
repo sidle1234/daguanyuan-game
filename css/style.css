@@ -1,4 +1,4 @@
-﻿:root{--primary:#8b4513;--primary-light:#d4a574;--bg:#faf7f2;--bg-card:#fff;--text:#3d2b1f;--text-light:#7a6b5e;--accent:#c9302c;--gold:#b8860b;--success:#2e7d32;--shadow:0 2px 12px rgba(139,69,19,0.1)}
+:root{--primary:#8b4513;--primary-light:#d4a574;--bg:#faf7f2;--bg-card:#fff;--text:#3d2b1f;--text-light:#7a6b5e;--accent:#c9302c;--gold:#b8860b;--success:#2e7d32;--shadow:0 2px 12px rgba(139,69,19,0.1)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"STKaiti","KaiTi","Noto Serif SC",serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .screen{display:none;min-height:100vh;padding:20px;animation:fadeIn .5s ease}

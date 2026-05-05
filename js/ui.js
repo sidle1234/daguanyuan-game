@@ -1,4 +1,4 @@
-﻿class GameUI {
+class GameUI {
   constructor(engine, storage) { this.engine = engine; this.storage = storage; this.currentQuestionIndex = 0; this.livesRemaining = 0; this.choiceMade = false; }
   init() { this.bindEvents(); this.showScreen('cover'); }
   bindEvents() {
@@ -59,7 +59,7 @@
     const clue = this.engine.getHiddenClue();
     if (clue) html += '<div class="hidden-clue"><span>?? 隐藏线索：</span>'+clue+'</div>';
     const bonus = this.engine.getBonusStory();
-    if (bonus) html += '<div class="bonus-story"><span>?? </span>'+bonus+'</div>';
+    if (bonus) html += '<div class="bonus-story"><span>&#128214; </span>'+bonus+'</div>';
     html += '<div class="choices" id="scene-choices">';
     scene.choices.forEach((ch, i) => { html += '<button class="choice-btn" data-index="'+i+'">'+ch.text+'</button>'; });
     html += '</div><div class="quiz-area" id="quiz-area" style="display:none;"></div>';
@@ -80,7 +80,7 @@
     if (this.currentQuestionIndex >= scene.questions.length) { this.onSceneComplete(); return; }
     if (this.livesRemaining <= 0) { this.onSceneFail(); return; }
     const q = scene.questions[this.currentQuestionIndex];
-    let html = '<div class="quiz-header"><span>第 '+(this.currentQuestionIndex+1)+'/'+scene.questions.length+' 题</span><span>剩余机会: '+'??'.repeat(this.livesRemaining)+'</span></div>';
+    let html = '<div class="quiz-header"><span>第 '+(this.currentQuestionIndex+1)+'/'+scene.questions.length+' 题</span><span>剩余机会: '+Array(this.livesRemaining).fill('&#10084;').join('')+'</span></div>';
     html += '<div class="question-text">'+q.text+'</div><div class="options">';
     q.options.forEach((opt, i) => { html += '<button class="option-btn" data-index="'+i+'">'+opt+'</button>'; });
     html += '</div>';
@@ -151,8 +151,8 @@
   }
   onRestart() { this.storage.clear(); this.engine.newGame(); this.showScreen('cover'); }
   getCharacterEmoji(id) {
-    const e = {jia_baoyu:'??',lin_daiyu:'??',xue_baochai:'??',wang_xifeng:'??',shi_xiangyun:'??',jia_tanchun:'??',miao_yu:'??',li_wan:'??',jia_yingchun:'??',jia_xichun:'???',qin_keqing:'??',qiao_jie:'??',xiang_ling:'??'};
-    return e[id] || '??';
+    const e = {jia_baoyu:'&#128142;',lin_daiyu:'&#127807;',xue_baochai:'&#128274;',wang_xifeng:'&#129413;',shi_xiangyun:'&#9729;',jia_tanchun:'&#127801;',miao_yu:'&#127802;',li_wan:'&#127806;',jia_yingchun:'&#127800;',jia_xichun:'&#128367;',qin_keqing:'&#127769;',qiao_jie:'&#127872;',xiang_ling:'&#127802;'};
+    return e[id] || '&#127982;';
   }
 }
 if (typeof module !== 'undefined' && module.exports) { module.exports = { GameUI }; }

@@ -1,4 +1,4 @@
-﻿class GameStorage {
+class GameStorage {
   constructor(storageKey) {
     this.storageKey = storageKey || 'daguanyuan_save';
     this.storage = typeof localStorage !== 'undefined' ? localStorage : null;
